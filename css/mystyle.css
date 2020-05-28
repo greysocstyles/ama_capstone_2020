@@ -1,0 +1,40 @@
+
+.fa-edit {
+
+	color: #6495ED;
+}
+
+.fa-edit:hover {
+
+	color: #00BFFF;
+}
+
+.fa-trash {
+
+	color: #B22222;
+}
+
+.fa-trash:hover {
+
+	color: #FF0000;
+}
+
+.fa-eye {
+
+	color: #7B68EE;
+}
+
+.fa-eye:hover {
+
+	color: #BA55D3;
+}
+
+.fa-book {
+
+	color: #5F9EA0;
+}
+
+.fa-book:hover {
+
+	color: #3CB371;
+}
