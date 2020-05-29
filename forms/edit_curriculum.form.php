@@ -43,7 +43,7 @@
 
 									while($degree = mysqli_fetch_assoc($degree_list)):
 										?>
-										<option value="<?php echo $degree['id'] ?>" <?php if($row['id'] == $degree['id']) { echo 'selected'; } ?>><?php echo $degree['degree_name'] ?></option>
+										<option value="<?php echo $degree['id'] ?>" <?php if($degree['id'] == $row['degree_id']) { echo 'selected'; } ?>><?php echo $degree['degree_name'] ?></option>
 										<?php
 									endwhile;
 									?>
