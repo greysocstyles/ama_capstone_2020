@@ -9,14 +9,14 @@ if (isset($_POST['edit_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == 'PO
 		$days = $_POST['days'];
 		$time = $_POST['time'];
 		$professor = $_POST['professor'];
-        
+
         if (empty($subject_id) || empty($section_id)) {
             $msg = 'Please fill in required fields.';
             $alert_class = 'alert-danger';
-            
+
         } else {
                 $edit_value = query("select subject_id
-                                          , section_id 
+                                          , section_id
                                     from trimester_subject_list
                                     where id = '$edit_id'");
                 if ($edit_value) {
@@ -25,12 +25,20 @@ if (isset($_POST['edit_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == 'PO
                           $e_section_id = $row['section_id'];
                     }
                     if ($subject_id == $e_subject_id && $section_id == $e_section_id) {
+						query(" update trimester_subject_list set
+								 room = '$room'
+								 , days = '$days'
+								 , time = '$time'
+								 , professor = '$professor'
+								where id = '$edit_id'");
+						$_SESSION['msg'] = 'Edit Success!';
+						$_SESSION['alert'] = 'alert-info';
                         header('Location: index.php?view=trimester_subject' . '&view_id=' . $trimester_id);
                     	exit;
-                    	
+
                     } else {
                             $select_exist = query("select sl.subject_code
-                                                        , s.section_code 
+                                                        , s.section_code
                                                     from trimester_subject_list tsl
                                                     inner join subject_list sl
                                                                 on tsl.subject_id = sl.id
@@ -46,7 +54,7 @@ if (isset($_POST['edit_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == 'PO
                                     while ($row = mysqli_fetch_assoc($select_exist)) {
                                             $trimester_subj_exist[] = $row;
                                     }
-                                    
+
                                 } else {
                                 		$update_trimester_subject = query(" update trimester_subject_list set
                                 									 		  subject_id = '$subject_id'
@@ -56,7 +64,7 @@ if (isset($_POST['edit_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == 'PO
                                 											, time = '$time'
                                 											, professor = '$professor'
                                 											where id = '$edit_id'");
-                                
+
                                 		if ($update_trimester_subject) {
                                 			$_SESSION['msg'] = 'Edit Success!';
                                 			$_SESSION['alert'] = 'alert-info';
@@ -64,12 +72,12 @@ if (isset($_POST['edit_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == 'PO
                                 			exit;
                                 		}
                                 }
-                        
+
                         }
                 }
-            
-                    
-        } 
+
+
+        }
     }
 
 }

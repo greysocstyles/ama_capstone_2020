@@ -1,12 +1,26 @@
 <?php
+
 ob_start();
 session_start();
 require_once 'includes/db_config.php';
-require_once 'includes/header.php';
+
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>AMA Advising & Scheduling</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/mystyle.css">
+	<link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css">
+	<script src="https://kit.fontawesome.com/b5023ced18.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<?php require_once 'includes/header.php'; ?>
 <div class="container">
 <?php
-//default page
+// default page
 if(!isset($_GET['menu']) && !isset($_GET['new']) && !isset($_GET['delete']) && !isset($_GET['view']) && !isset($_GET['edit'])) {
     require_once 'pages/subject_list.php';
 }
@@ -102,19 +116,19 @@ if(isset($_GET['new'])) {
 if(isset($_GET['view'])) {
 	switch($_GET['view']) {
 		case 'trimester_subject':
-				require_once 'trimester_subject_list.php';
+				require_once 'pages/trimester_subject_list.php';
 				break;
 
 		case 'student_subject':
-				require_once 'student_subject_list.php';
+				require_once 'pages/student_subject_list.php';
 				break;
 
 		case 'curriculum_subject':
-				require_once 'curriculum_subject_list.php';
+				require_once 'pages/curriculum_subject_list.php';
 				break;
 
 		case 'petition_student':
-				require_once 'request_to_open_student_list.php';
+				require_once 'pages/request_to_open_student_list.php';
 				break;
 	}
 }
@@ -216,12 +230,14 @@ if(isset($_GET['delete'])) {
 				break;
 	}
 }
-
-?>
-</div>
-<?php
-require_once 'includes/footer.php';
 mysqli_close($connect);
 unset($_SESSION['msg']);
 unset($_SESSION['alert']);
-ob_end_flush();
+?>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+<?php ob_end_flush(); ?>

@@ -1,5 +1,4 @@
 <?php require_once 'actions/create_student_subject.php'; ?>
-
 <?php
 
 if (isset($_GET['student_id'])) {
@@ -37,7 +36,6 @@ if (isset($_GET['student_id'])) {
 }
 
 ?>
-
 <?php
 
 if(isset($msg) && isset($alert_class)): ?>
