@@ -24,7 +24,7 @@
 				<form action="index.php?new=curriculum" method="POST">
 					<div class="form-group">
 						<label>Degree</label>
-						<select class="form-control" name="degree_name">
+						<select class="form-control" name="degree_name" required>
 							<?php
 
 							$select_degree = query("SELECT id, degree_name from degree_list");
@@ -41,10 +41,10 @@
 					</div>
 					<div class="form-group">
 						<label>Curriculum Year</label>
-						<input class="form-control" type="text" pattern="[0-9]+[-][0-9]+" minlength="9" maxlength="9" name="curriculum_year" placeholder="ex. 2019-2020" value="<?php if(isset($_POST['curriculum_year'])) echo $_POST['curriculum_year'] ?>">
+						<input class="form-control" type="text" pattern="[0-9]+[-][0-9]+" minlength="9" maxlength="9" name="curriculum_year" placeholder="ex. 2019-2020" value="<?php if(isset($_POST['curriculum_year'])) echo $_POST['curriculum_year'] ?>" required>
 					</div>
 					<div class="form-group">
-					    <?php 
+					    <?php
 					    if(isset($curriculum_exist)):
 					        echo 'Curriculum exist: ';
 					        foreach ($curriculum_exist as $value): ?>

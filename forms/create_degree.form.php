@@ -24,11 +24,11 @@
 				<form action="index.php?new=degree" method="POST">
 					<div class="form-group">
 						<label for="degree_name">Degree Name</label>
-						<input class="form-control" type="text" pattern="[a-zA-Z]+" title="Degree name" id="degree_name" name="degree_name" value="<?php if(isset($_POST['degree_name'])) echo $_POST['degree_name'] ?>">
+						<input class="form-control" type="text" pattern="[a-zA-Z]+" title="Degree name" id="degree_name" name="degree_name" value="<?php if(isset($_POST['degree_name'])) echo $_POST['degree_name'] ?>" required>
 					</div>
 					<div class="form-group">
 						<label for="degree_desc">Degree Description</label>
-						<input class="form-control" type="text" pattern="[a-zA-Z\s]+" title="Degree description" id="degree_desc" name="degree_desc" value="<?php if(isset($_POST['degree_name'])) echo $_POST['degree_desc'] ?>">
+						<input class="form-control" type="text" pattern="[a-zA-Z\s]+" title="Degree description" id="degree_desc" name="degree_desc" value="<?php if(isset($_POST['degree_name'])) echo $_POST['degree_desc'] ?>" required>
 					</div>
 					<div class="form-group">
 						<button class="btn btn-primary" type="submit" name="create_degree">Create</button>

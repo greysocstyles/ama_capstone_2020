@@ -7,8 +7,8 @@
         		<button type="button" class="close" data-dismiss="alert">&times;</button>
         		<strong><?php echo $msg ?></strong>
         	</div>
-            <?php 
-        endif; 
+            <?php
+        endif;
         ?>
 		<ol class="breadcrumb">
 		  <li class="breadcrumb-item"><a href="index.php?menu=section_list">Section List</a></li>
@@ -20,11 +20,11 @@
 				<form action="index.php?new=section" method="POST">
 					<div class="form-group">
 						<label>Section Code</label>
-						<input class="form-control" type="text" pattern="[a-zA-Z0-9]+" placeholder="ex. 23CF" title="section name" name="section_code">
+						<input class="form-control" type="text" pattern="[a-zA-Z0-9]+" placeholder="ex. 23CF" title="section name" name="section_code" required>
 					</div>
 					<div class="form-group">
 						<label>Degree</label>
-						<select class="form-control" name="degree_id">
+						<select class="form-control" name="degree_id" required>
 							<?php
 
 							$select_degree = query("select id, degree_name from degree_list");
@@ -40,8 +40,8 @@
 						</select>
 					</div>
 					<div class="form-group">
-					    <?php 
-					    
+					    <?php
+
 					    if (isset($section_exist)):
 					        echo 'Section Exist: ';
 					        foreach ($section_exist as $value) : ?>
