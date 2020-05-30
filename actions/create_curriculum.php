@@ -24,10 +24,10 @@ if(isset($_POST['create_curriculum']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 				$row_count = mysqli_num_rows($select_exist);
 
 				if ($row_count > 0) {
-						$curriculum_exist = array();
-						while ($row = mysqli_fetch_assoc($select_exist)) {
-					            $curriculum_exist[] = $row;	    
-						}
+					$curriculum_exist = array();
+					while ($row = mysqli_fetch_assoc($select_exist)) {
+					      $curriculum_exist[] = $row;
+					}
 
 				} else {
 						$insert_curriculum = query("insert into curriculum_list (degree_id, curriculum_year)

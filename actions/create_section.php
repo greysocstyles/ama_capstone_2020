@@ -13,7 +13,13 @@ if(isset($_POST['create_section']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 			$alert_class = 'alert-warning';
 
 		} else {
-				$select_exist = query("select s.section_code, dl.degree_name from section_list s inner join degree_list dl on s.degree_id = dl.id where s.section_code = '$section' and s.degree_id = '$degree_id'");
+				$select_exist = query("select s.section_code
+											, dl.degree_name
+										from section_list s
+										inner join degree_list dl
+													on s.degree_id = dl.id
+										where s.section_code = '$section'
+										and s.degree_id = '$degree_id'");
 
 				if ($select_exist) {
 						$row_count = mysqli_num_rows($select_exist);

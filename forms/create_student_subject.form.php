@@ -106,7 +106,7 @@ endif;
                     <input class="form-control" name="status[]" type="hidden" placeholder="Status">
                 </div>
                 <div class="form-group col-md-4">
-                    <input class="form-control"  name="add_info[]" type="text" placeholder="Additional Info. (optional)">
+                    <input class="form-control" pattern="[a-zA-Z0-9\s]+" name="add_info[]" type="text" placeholder="Additional Info. (optional)">
                 </div>
             </div>
             <?php

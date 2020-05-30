@@ -39,4 +39,5 @@ if (isset($_POST['create_student_subject']) && $_SERVER['REQUEST_METHOD'] == 'PO
                 exit;
             }
         }
+        
 }

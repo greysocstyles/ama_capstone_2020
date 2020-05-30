@@ -38,11 +38,11 @@
 							<input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>"/>
 							<div class="form-group">
 								<label>USN</label>
-								<input class="form-control" type="text" pattern="[0-9]{11,12}" name="usn" value="<?php echo $row['usn']?>" required>
+								<input class="form-control" type="text" pattern="\d*" minlength="11" maxlength="12" name="usn" value="<?php echo $row['usn']?>" required>
 							</div>
 							<div class="form-group">
 								<label>Name</label>
-								<input class="form-control" type="text" pattern="[a-zA-Z\s]+" name="name" value="<?php echo $row['name'] ?>" required>
+								<input class="form-control" type="text" pattern="^[a-zA-Z\s]+$" name="name" value="<?php echo $row['name'] ?>" required>
 							</div>
 							<div class="form-group">
 								<label>Curriculum</label>

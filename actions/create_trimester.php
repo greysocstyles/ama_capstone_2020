@@ -27,8 +27,10 @@ if (isset($_POST['create_trimester']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 					$row_count = mysqli_num_rows($select_exist);
 
 						if ($row_count > 0) {
-							$msg = 'Year and Trimester already exist.';
-							$alert_class = 'alert-danger';
+							$trimester_exist = array();
+							while ($row = mysqli_fetch_assoc($select_exist)) {
+									$trimester_exist[] = $row;
+							}
 
 						} else {
 								$insert_trimester = query("insert into trimester_list (year, trimester) values ('$year', '$trimester')");
@@ -42,4 +44,5 @@ if (isset($_POST['create_trimester']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 						}
 				}
 		}
+
 }

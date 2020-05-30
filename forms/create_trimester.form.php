@@ -31,6 +31,19 @@
 						<input class="form-control" type="number" title="trimester 1 - 3 only" min="1" max="3" name="trimester" id=trimester value="<?php if(isset($_POST['trimester'])) echo $_POST['trimester'] ?>" required>
 					</div>
 					<div class="form-group">
+						<?php
+
+						if (isset($trimester_exist)):
+							echo 'Trimester exist: ';
+							foreach ($trimester_exist as $value):
+									?>
+									<strong class="text-danger"><?php echo year_trimester($value['year']) . ' year' . ', ' . year_trimester($value['trimester']) . ' trimester' ?></strong>
+									<?php
+							endforeach;
+						endif;
+				 		?>
+					</div>
+					<div class="form-group">
 						<button class="btn btn-primary" type="submit" name="create_trimester">Create</button>
 						<a class="btn btn-danger" href="index.php?menu=trimester_list">Cancel</a>
 					</div>

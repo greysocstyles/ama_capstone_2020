@@ -20,7 +20,7 @@ if(isset($_POST['add_petition_student']) && $_SERVER['REQUEST_METHOD'] == 'POST'
 				if($select_exist) {
 						$row_count = mysqli_num_rows($select_exist);
 
-						if($row_count > 0) {
+						if ($row_count > 0) {
 							$student_exist = array();
 							while($row = mysqli_fetch_assoc($select_exist)) {
 									$student_exist[] = $row;
