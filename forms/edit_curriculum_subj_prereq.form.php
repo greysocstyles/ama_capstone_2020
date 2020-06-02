@@ -54,8 +54,10 @@ if(isset($_GET['edit_id'])){
                             $select_curri_subj_prereq = query("select csp.id
                                                                     , sl.subject_code
                                                             from curriculum_subj_prereq csp
+                                                            left join curriculum_subject cs
+                                                                    on csp.preq_subj_id = cs.id
                                                             inner join subject_list sl
-                                                                    on csp.preq_subj_id = sl.id
+                                                                    on cs.subject_id = sl.id
                                                             where csp.curriculum_subj_id = '$edit_id'");
                             if($select_curri_subj_prereq):
                                 while($row = mysqli_fetch_assoc($select_curri_subj_prereq)):

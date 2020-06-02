@@ -68,15 +68,16 @@ for ($i = 1; $i <= $row_count; $i++):
 										,	sl.subject_code as subject_code
 										,	cs.year
 										,	cs.trimester
-										,	group_concat(sl2.subject_code
-									order by sl2.subject_code asc separator ', ') as prerequisite_subj
+										,	group_concat(sl2.subject_code order by sl2.subject_code asc separator ', ') as prerequisite_subj
 									  from 	curriculum_subj_prereq csp
 							    inner join 	curriculum_subject cs
 											on csp.curriculum_subj_id = cs.id
+								left join   curriculum_subject cs2
+											on csp.preq_subj_id = cs2.id
 								inner join	subject_list sl
 											on cs.subject_id = sl.id
 								left join 	subject_list sl2
-											on csp.preq_subj_id = sl2.id
+											on cs2.subject_id = sl2.id
 									where   cs.curriculum_id = '$curriculum_id'
 									  and	cs.year = '$i'
 

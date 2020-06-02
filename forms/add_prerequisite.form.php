@@ -20,7 +20,11 @@ if (isset($_GET['curriculum_subj_id'])) {
             }
         }
 
-        $select_subject = query("select id, subject_code from subject_list");
+        $select_subject = query("select cs.id, sl.subject_code
+                                 from curriculum_subject cs
+                                 inner join subject_list sl
+                                			on cs.subject_id = sl.id
+                                 where cs.curriculum_id = '$curriculum_id'");
 
         if ($select_subject) {
             $subject_list = array();

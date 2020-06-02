@@ -8,8 +8,10 @@ if(isset($_GET['delete_id'])):
 						, 	csp.curriculum_subj_id
 						, 	sl.subject_code
 					from curriculum_subj_prereq csp
+					left join curriculum_subject cs
+								on csp.preq_subj_id = cs.id
 					inner join subject_list sl
-					on csp.preq_subj_id = sl.id
+								on cs.subject_id = sl.id
 					where csp.id = '$delete_id'");
 	if($result):
 		while($row = mysqli_fetch_assoc($result)):
