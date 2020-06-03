@@ -56,6 +56,10 @@ if(isset($_GET['menu'])) {
 				require_once 'pages/request_to_open_list.php';
 				break;
 
+		case 'account_list':
+				require_once 'pages/account_list.php';
+				break;
+
 	}
 }
 

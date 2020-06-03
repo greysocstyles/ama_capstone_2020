@@ -19,13 +19,21 @@
 					<a class="nav-link" href="index.php?menu=curriculum_list">Curriculum List</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="index.php?menu=section_list">Section List</a>
+					<a class="nav-link" href="index.php?menu=section_list">Section</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="index.php?menu=degree_list">Degree List</a>
+					<a class="nav-link" href="index.php?menu=degree_list">Degree</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="index.php?menu=petition_list">Petition List</a>
+					<a class="nav-link" href="index.php?menu=petition_list">Petition</a>
+				</li>
+				<li class="nav-item dropdown">
+				    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
+				    <div class="dropdown-menu" style="">
+				      <a class="dropdown-item" href="index.php?menu=account_list">Account List</a>
+				      <div class="dropdown-divider"></div>
+				      <a class="dropdown-item" href="#">Log out</a>
+				    </div>
 				</li>
 			</ul>
 		</div>
