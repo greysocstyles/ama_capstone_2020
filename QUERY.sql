@@ -29,3 +29,18 @@ having preq_count = passed
 order by cs.year
     ,	 cs.trimester
 asc
+
+
+select  al.id
+    ,   al.password 
+    ,   sl.name as student_name
+    ,   cl.curriculum_year
+    ,   dl.degree_name
+from account_list al 
+inner join student_list sl 
+            on al.student_id = sl.id 
+inner join curriculum_list cl 
+            on sl.curriculum_id = cl.id 
+inner join degree_list dl 
+            on cl.degree_id = dl.id 
+where al.id = 1
