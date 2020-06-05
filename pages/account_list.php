@@ -7,10 +7,10 @@
     <div class="form-group">
         <a class="btn btn-outline-primary" href="index.php?new=account">New Account</a>
     </div>
-    <div class="table-responsive mt-3">
-        <h3 class="text-center">Admin</h3>
-        <table class="table">
-            <thead>
+    <div class="table-responsive">
+         <h3 class="text-center">Admin</h3>
+        <table class="table table-sm table-striped">
+            <thead class="thead-light">
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
@@ -49,14 +49,13 @@
     </div>
     <div class="table-responsive mt-5">
         <h3 class="text-center">Student</h3>
-        <table class="table">
-            <thead>
+        <table class="table table-sm table-striped">
+            <thead class="thead-light">
                 <tr>
                     <th>Id</th>
                     <th>USN</th>
                     <th>Name</th>
                     <th>Course</th>
-                    <th>Curriculum</th>
                     <th>Password</th>
                     <th>Actions</th>
                 </tr>
@@ -86,7 +85,6 @@
                                 <td><?php echo $row['usn'] ?></td>
                                 <td><?php echo $row['name'] ?></td>
                                 <td><?php echo $row['degree_name'] ?></td>
-                                <td><?php echo $row['curriculum_year'] ?></td>
                                 <td><?php echo $row['password'] ?></td>
                                 <td>
                                     <a href="index.php?edit=account&edit_id=<?php echo $row['id'] ?>&account_type=<?php echo $row['account_type'] ?>">Edit</a>
