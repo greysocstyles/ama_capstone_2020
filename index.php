@@ -113,6 +113,10 @@ if(isset($_GET['new'])) {
 		case 'petition_student':
 				require_once 'forms/create_petition_student.form.php';
 				break;
+
+		case 'account':
+				require_once 'forms/create_account.form.php';
+				break;
 	}
 }
 
@@ -179,6 +183,10 @@ if(isset($_GET['edit'])) {
 		case 'petition':
 				require_once 'forms/edit_petition_subject.form.php';
 				break;
+
+		case 'account':
+				require_once 'forms/edit_account.form.php';
+				break;
 	}
 }
 
@@ -231,6 +239,10 @@ if(isset($_GET['delete'])) {
 
 		case 'petition_student':
 				require_once 'forms/delete_petition_student.form.php';
+				break;
+
+		case 'account':
+				require_once 'forms/delete_account.form.php';
 				break;
 	}
 }
