@@ -95,10 +95,9 @@ for ($i = 1; $i <= $row_count; $i++):
 				if ($yr != $year . ' Year' . ', ' . $trimester . ' Trimester'):
 					$yr = $year . ' Year' . ', ' . $trimester . ' Trimester';
 					?>
-					<h3></h3>
 					<thead>
 						<tr>
-							<th colspan="4" class="text-center text-dark bg-light"><?php echo $trimester . ' Trimester'; ?></th>
+							<th colspan="4" class="text-center text-dark bg-secondary"><?php echo $trimester . ' Trimester'; ?></th>
 						</tr>
 						<tr>
 							<th class="text-muted">Id</th>

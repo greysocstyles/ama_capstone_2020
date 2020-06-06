@@ -18,8 +18,7 @@ where csp.curriculum_subj_id not in (
 
     select subject_id
     from student_subject_list
-    where student_id = 1
-    and status = 'PASS'
+    where status = 'PASS';
 )
 
 group by sl.subject_code
