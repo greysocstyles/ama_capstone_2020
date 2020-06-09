@@ -4,13 +4,14 @@
     <div class="col-lg-8 m-auto">
         <?php
 
-        if(isset($msg) && isset($alert_class)):
-             ?>
-            <div class="alert alert-dismissible <?php echo $msg ?>">
+        if(isset($msg) && isset($alert_class)): ?>
+            <div class="alert alert-dismissible <?php echo $alert_class ?>">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong><?php echo $alert_class ?></strong>
+                <strong><?php echo $msg ?></strong>
             </div>
-        <?php endif; ?>
+            <?php
+        endif;
+        ?>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php?menu=degree_list">Degree List</a></li>
           <li class="breadcrumb-item active">Edit Degree</li>
@@ -31,11 +32,11 @@
                             <input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">
                             <div class="form-group">
                                 <label>Degree Name</label>
-                                <input class="form-control" type="text" name="degree_name" value="<?php echo $row['degree_name'] ?>">
+                                <input class="form-control" type="text" pattern="[a-zA-Z]+" title="Degree name, ex. BSCS" name="degree_name" value="<?php echo $row['degree_name'] ?>">
                             </div>
                             <div class="form-group">
                                 <label>Degree Description</label>
-                                <input class="form-control" type="text" name="degree_desc" value="<?php echo $row['degree_desc'] ?>">
+                                <input class="form-control" type="text" pattern="[a-zA-Z]+" title="Degree Description, ex. Bachelor of Science in Computer Science" name="degree_desc" value="<?php echo $row['degree_desc'] ?>">
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit" name="edit_degree">Update</button>

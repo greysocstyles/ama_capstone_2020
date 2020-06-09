@@ -1,14 +1,22 @@
 <?php
 
-if(isset($_POST['edit_degree']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+if (isset($_POST['edit_degree']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $edit_id = $_POST['edit_id'];
     $degree_name = strtoupper($_POST['degree_name']);
     $degree_desc = strtoupper($_POST['degree_desc']);
 
-    if(empty($degree_name) or empty($degree_desc)) {
+    if (empty($degree_name) or empty($degree_desc)) {
         $msg = 'Please fill in empty fields.';
         $alert_class = 'alert-danger';
 
+    } elseif (!preg_match("/^[a-zA-Z\s]+$/i", $degree_name)) {
+            $msg = 'Invalid characters on Degree Name.';
+            $alert_class = 'alert-danger';
+
+    } elseif (!preg_match("/^[a-zA-Z0\s]+$/i", $degree_desc)) {
+            $msg = 'Invalid characters on Degree Description.';
+            $alert_class = 'alert-danger';
+            
     } else {
             $result = query("select degree_name
                                 ,   degree_desc

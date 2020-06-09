@@ -12,6 +12,10 @@ if(isset($_POST['create_section']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 			$msg = 'Invalid length.';
 			$alert_class = 'alert-warning';
 
+		} elseif(!preg_match("/[a-zA-Z0-9]+/", $section)) {
+				$msg = 'Invalid Section code.';
+				$alert_class = 'alert-danger';
+
 		} else {
 				$select_exist = query("select s.section_code
 											, dl.degree_name

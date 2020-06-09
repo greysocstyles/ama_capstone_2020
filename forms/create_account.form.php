@@ -4,7 +4,6 @@
     <div class="row">
     	<div class="col-md-8 m-auto">
     		<?php
-
 			if(isset($msg) && isset($alert_class)): ?>
 				<div class="alert alert-dismissible <?php echo $alert_class ?>">
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -38,16 +37,20 @@
 				    		<button class="btn btn-secondary" type="submit">Go</button>
 			    		</div>
     				</div>
-		    		<?php if (isset($_POST['select_account_type']) && $_POST['select_account_type'] == 'Admin'): ?>
+		    		<?php 
+		    		if (isset($_POST['select_account_type']) && $_POST['select_account_type'] == 'Admin'): 
+		    			?>
 			    		<div class="form-group">
-			    			<input class="form-control" type="text" name="name" placeholder="Name">
+			    			<input class="form-control" type="text" name="name" placeholder="Name" value="<?php if (isset($_POST['name'])) echo $_POST['name'] ?>">
 			    		</div>
 			    		<div class="form-group">
-			    			<input class="form-control" type="text" name="username" placeholder="Username">
+			    			<input class="form-control" type="text" name="username" placeholder="Username" value="<?php if (isset($_POST['username'])) echo $_POST['username'] ?>">
 			    		</div>
-		    		<?php elseif (isset($_POST['select_account_type']) && $_POST['select_account_type'] == 'Student'): ?>
+		    		<?php 
+		    		elseif (isset($_POST['select_account_type']) && $_POST['select_account_type'] == 'Student'): 
+		    			?>
 			    		<div class="form-group">
-			    			<select class="form-control" name="usn">
+			    			<select class="form-control" name="student_id">
 			    				<?php 
 			    				$student_list = query("select id, usn, name from student_list");
 			    				if ($student_list):
@@ -60,16 +63,44 @@
 			    				?>
 			    			</select>
 			    		</div>
-		    		<?php endif; ?>
-		    		<?php if (isset($_POST['select_account_type'])): ?>
+		    			<?php 
+		    		endif; 
+		    		?>
+		    		<?php 
+		    		if (isset($_POST['select_account_type'])): 
+		    			?>
 			    		<div class="form-group">
 			    			<input class="form-control" type="text" name="password" placeholder="Password">
+			    		</div>
+			    		<div class="form-group">
+			    			<?php
+			    			if (isset($username_exist)):
+			    				echo 'Username Exist : ';
+			    				foreach ($username_exist as $value):
+			    						?>
+			    						<strong class="text-danger"><?php echo implode($value) ?></strong>
+			    						<?php
+			    				endforeach;
+			    			endif;
+			    			?>
+			    			<?php
+			    			if (isset($student_exist)):
+			    				echo 'Student Exist : ';
+			    				foreach ($student_exist as $value):
+										?>
+										<strong class="text-danger"><?php echo implode(", ", $value) ?></strong>
+										<?php
+								endforeach;
+							endif; 
+							?>
 			    		</div>
 			    		<div class="form-group">
 				    		<button class="btn btn-primary" name="create_account" type="submit">Submit</button>
 				    		<a class="btn btn-danger" href="index.php?menu=account_list">Cancel</a>
 			    		</div>
-		    		<?php endif; ?>
+		    			<?php 
+		    		endif; 
+		    		?>
 		    	</div>
 		    </div>
     	</div>

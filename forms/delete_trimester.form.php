@@ -4,7 +4,7 @@
   <li class="breadcrumb-item active">Delete Trimester</li>
 </ol>
 <div class="card">
-  <div class="card-body bg-light">
+  <div class="card-body">
   <?php
 
   if(isset($_GET['delete_id'])):
@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <p>Are you sure you want to Delete <strong class="text-danger"><?php echo year_trimester($row['year']) . ' Year, ' . year_trimester($row['trimester']) . ' Trimester' ?></strong>?</p>
                         <button class="btn btn-danger" type="submit" name="delete_trimester">Yes</button>
-                        <a class="btn btn-secondary active" href="index.php?menu=trimester_list">No</a>
+                        <a class="btn btn-secondary" href="index.php?menu=trimester_list">No</a>
                     </div>
                 </form>
                 <?php

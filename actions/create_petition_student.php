@@ -6,8 +6,8 @@ if(isset($_POST['add_petition_student']) && $_SERVER['REQUEST_METHOD'] == 'POST'
 		$petition_student_id = $_POST['petition_student_id'];
 
 		if(empty($petition_subject_id) || empty($petition_student_id)) {
-				 $msg = 'Please fill in all required fields.';
-				 $alert_class = 'alert-warning';
+				$msg = 'Please fill in all required fields.';
+				$alert_class = 'alert-warning';
 
 		} else {
 

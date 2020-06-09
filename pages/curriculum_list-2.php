@@ -1,3 +1,7 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item active">Curriculum List</li>
+  <li class="breadcrumb-item active"></li>
+</ol>
 <div class="mt-5">
 	<h2 class="text-center">Curriculum List</h2>
 	<div class="table-responsive mt-4">

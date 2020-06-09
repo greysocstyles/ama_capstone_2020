@@ -17,7 +17,7 @@ if (isset($_POST['login']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 									from account_list al
 									left join student_list sl 
 												on al.student_id = sl.id
-									where al.username = '$username' or sl.usn = '$username'
+									where al.username = '$username'
 									and al.password ='$password'");
 			if ($select_exist){
 				$row_count = mysqli_num_rows($select_exist);

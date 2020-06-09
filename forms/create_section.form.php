@@ -20,7 +20,7 @@
 				<form action="index.php?new=section" method="POST">
 					<div class="form-group">
 						<label>Section Code</label>
-						<input class="form-control" type="text" pattern="[a-zA-Z0-9]+" placeholder="ex. 23CF" title="section name" name="section_code" required>
+						<input class="form-control" type="text" pattern="[a-zA-Z0-9]+" placeholder="ex. 23CF" title="section code" name="section_code" required>
 					</div>
 					<div class="form-group">
 						<label>Degree</label>

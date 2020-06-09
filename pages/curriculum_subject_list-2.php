@@ -1,3 +1,7 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="index.php?m=cl">Curriculum List</a></li>
+  <li class="breadcrumb-item active">Curriculum Subject List</li>
+</ol>
 <?php 
 
 if (isset($_GET['v_id'])) {

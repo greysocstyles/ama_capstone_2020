@@ -41,7 +41,7 @@ if(isset($_GET['edit_id'])){
                     <h3 class="text-center"><?php echo $subject_code ?></h3>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-sm table-bordered table-striped">
+                    <table class="table table-sm table-striped">
                         <thead class="thead-light">
                             <tr>
                                 <th>Prerequisite Subject</th>

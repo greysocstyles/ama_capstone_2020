@@ -17,6 +17,7 @@ if(isset($_POST['create_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == 'P
 			if(empty($subject[$i]) || empty($section[$i]) || empty($days[$i]) || empty($time[$i])) {
 					 $msg = 'Please fill in empty fields.';
 					 $alert_class = 'alert-warning';
+					 break;
 
 			} else {
 					 $insert_values[] = "(	  '$trimester_id'

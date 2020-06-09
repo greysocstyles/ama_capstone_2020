@@ -29,9 +29,19 @@ if (isset($_GET['edit_id'])):
 	}
 
 ?>
-<form action="index.php?edit=account" method="POST">
+<form action="index.php?edit=account&edit_id=<?php echo $edit_id ?>&account_type=<?php echo $_SESSION['account_type'] ?>" method="POST">
 	<div class="form-row">
 		<div class="col-md-8 m-auto">
+			<?php
+
+			if(isset($msg) && isset($alert_class)): ?>
+				<div class="alert alert-dismissible <?php echo $alert_class ?>">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					<strong><?php echo $msg ?></strong>
+				</div>
+				<?php
+			endif;
+			?>
 			<ol class="breadcrumb">
 			  <li class="breadcrumb-item"><a href="index.php?menu=account_list">Account List</a></li>
 			  <li class="breadcrumb-item active">Edit Account</li>
@@ -46,9 +56,11 @@ if (isset($_GET['edit_id'])):
 							foreach ($account_ad as $row):
 							?>
 							<div class="form-group">
+								<label>Name</label>
 								<input class="form-control" type="text" name="name" placeholder="name" value="<?php echo $row['name'] ?>">
 							</div>
 							<div class="form-group">
+								<label>Username</label>
 								<input class="form-control" type="text" name="username" placeholder="username" value="<?php echo $row['username'] ?>">
 							</div>
 					<?php 	endforeach; ?>
@@ -57,15 +69,18 @@ if (isset($_GET['edit_id'])):
 							?>
 							<div class="row">
 								<div class="form-group col-sm-6">
+									<label>USN</label>
 									<input class="form-control" type="text" value="<?php echo $row['usn'] ?>" readonly>
 								</div>
 								<div class="form-group col-sm-6">
+									<label>Name</label>
 									<input class="form-control" type="text" value="<?php echo $row['name'] ?>" readonly>
 								</div>
 							</div>
 					<?php 	endforeach; ?>
 					<?php endif; ?>
 					<div class="form-group">
+						<label>Password</label>
 						<input class="form-control" type="text" name="password" placeholder="password" value="<?php echo $row['password'] ?>">
 					</div>
 					<div class="form-group">

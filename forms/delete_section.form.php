@@ -15,7 +15,7 @@ if(isset($_GET['delete_id'])):
         if($result):
             while($row = mysqli_fetch_assoc($result)): ?>
             <div class="card">
-                <div class="card-body bg-secondary">
+                <div class="card-body">
                     <form action="index.php?delete=section&delete_id=<?php echo $row['id'] ?>" method="POST">
                         <input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>"/>
                         <div class="form-group">

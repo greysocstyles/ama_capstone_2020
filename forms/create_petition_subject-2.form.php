@@ -1,6 +1,6 @@
 <?php require_once 'actions/create_petition_subject-2.php'; ?>
 
-<form action="index.php?c=p" method="POST">
+<form action="index.php?c=cp" method="POST">
 	<div class="row">
 		<div class="col-md-8 m-auto">
 			<div class="card">
@@ -16,7 +16,7 @@
 							if ($subject_list):
 								while ($row = mysqli_fetch_assoc($subject_list)):
 									  ?>
-									  <option value="<?php echo $row['id'] ?>"><?php echo $row['subject_code'] ?></option>
+									  <option value="<?php echo $row['id'] ?>" <?php if(isset($_POST['petition_subject']) && $_POST['petition_subject'] == $row['id']) echo 'selected' ?>><?php echo $row['subject_code'] ?></option>
 									  <?php 
 								endwhile;
 							endif;

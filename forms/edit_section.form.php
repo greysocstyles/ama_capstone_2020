@@ -39,7 +39,7 @@
 							<input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">
 							<div class="form-group">
 								<label for="section_code">Section Code</label>
-								<input class="form-control" type="text" id="section_code" name="section_code" value="<?php
+								<input class="form-control" type="text" pattern="[a-zA-Z0-9]+" id="section_code" name="section_code" value="<?php
 								echo $row['section_code'] ?>">
 							</div>
 							<div class="form-group">

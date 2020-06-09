@@ -1,28 +1,5 @@
 <?php require_once 'actions/create_curriculum_subject.php'; ?>
 <?php
-
-if (isset($_GET['curriculum_id'])) {
-		$curriculum_id = $_GET['curriculum_id'];
-		$select_subject = query("SELECT   sl.id
-										, sl.subject_code
-								 FROM subject_list sl
-								 WHERE NOT EXISTS (SELECT cs.subject_id
-													FROM curriculum_subject cs
-													WHERE cs.subject_id = sl.id
-													and cs.curriculum_id = '$curriculum_id')");
-
-		if ($select_subject) {
-			$subject_list = array();
-			while ($row = mysqli_fetch_assoc($select_subject)) {
-					$subject_list[] = $row;
-
-			}
-		}
-
-}
-?>
-<?php
-
 if(isset($msg) && isset($alert_class)): ?>
 	<div class="alert alert-dismissible <?php echo $alert_class ?>">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -30,6 +7,27 @@ if(isset($msg) && isset($alert_class)): ?>
 	</div>
 	<?php
 endif;
+?>
+<?php
+
+if (isset($_GET['curriculum_id'])) {
+	$curriculum_id = $_GET['curriculum_id'];
+	$select_subject = query("SELECT   sl.id
+									, sl.subject_code
+							 FROM subject_list sl
+							 WHERE NOT EXISTS (SELECT cs.subject_id
+												FROM curriculum_subject cs
+												WHERE cs.subject_id = sl.id
+												and cs.curriculum_id = '$curriculum_id')");
+
+	if ($select_subject) {
+		$subject_list = array();
+		while ($row = mysqli_fetch_assoc($select_subject)) {
+				$subject_list[] = $row;
+
+		}
+	}
+}
 ?>
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a href="index.php?menu=curriculum_list">Curriculum List</a></li>

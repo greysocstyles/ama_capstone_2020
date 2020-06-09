@@ -33,13 +33,29 @@ if (isset($_GET['v'])) {
 		case 'mg':
 				require_once 'my_grades.php';
 				break;
+
+		case 'ps':
+				require_once 'request_to_open_student_list-2.php';
+				break;
 	}
 }
 
 if (isset($_GET['c'])) {
 	switch($_GET['c']) {
-		case 'p':
+		case 'cp':
 				require_once 'forms/create_petition_subject-2.form.php';
+				break;
+
+		case 'jp':
+				require_once 'forms/join_petition.form.php';
+				break;
+	}
+}
+
+if(isset($_GET['d'])) {
+	switch($_GET['d']) {
+		case 'lp':
+				require_once 'forms/leave_petition.form.php';
 				break;
 	}
 }

@@ -7,7 +7,6 @@ if (isset($_POST['create_subject']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 		$status = $_POST['subject_status'];
 		$lec = $_POST['lec_unit'];
 		$lab = $_POST['lab_unit'];
-
 		$insert_values = array();
 		$filter_values = array();
 		$subject_count = count($code);

@@ -12,6 +12,10 @@ if(isset($_POST['edit_section']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 				$msg = 'Invalid length.';
 				$alert_class = 'alert-danger';
 
+		} elseif(!preg_match("/[a-zA-Z0-9]+/", $section_code)) {
+				$msg = 'Invalid Section code.';
+				$alert_class = 'alert-danger';
+
 		} else {
 				$update_section = query("update section_list set section_code = '$section_code' where id = '$edit_id'");
 

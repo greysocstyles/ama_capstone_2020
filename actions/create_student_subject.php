@@ -14,6 +14,7 @@ if (isset($_POST['create_student_subject']) && $_SERVER['REQUEST_METHOD'] == 'PO
             if (empty($subject[$i]) || empty($grade[$i])) {
                 $msg = 'Please fill in empty fields.';
                 $alert_class = 'alert-warning';
+                break;
 
             } else {
                     $status[$i] = grade_status($grade[$i]);
