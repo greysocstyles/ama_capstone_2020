@@ -94,41 +94,75 @@ endif;
 <?php
 
 if (isset($_POST['get_advising']) && $_SERVER['REQUEST_METHOD'] == 'POST'):
-	$get_advising = query(" select  sl.subject_code
-							    ,   sl.subject_desc
-							    ,   sl.lec_unit
-							    ,   sl.lab_unit
-							    ,   GROUP_CONCAT(sl2.subject_code) as prerequisites
-							    ,   count(csp.preq_subj_id) as preq_count
-							    ,   count(sts.subject_id) as passed
-							from curriculum_subj_prereq csp
-							inner join curriculum_subject cs
-							            on csp.curriculum_subj_id = cs.id
-							left join curriculum_subject cs2
-							            on csp.preq_subj_id = cs2.id
-							inner join subject_list sl
-							            on cs.subject_id = sl.id
-							left join subject_list sl2
-							            on cs2.subject_id = sl2.id
-							left join student_subject_list sts
-										on csp.preq_subj_id = sts.subject_id
+	$get_advising = query("
+							(SELECT
+							    sl.subject_code,
+							 	cs.year as y,
+							 	cs.trimester as t,
+							 	sl.subject_desc,
+							 	sl.lec_unit,
+							 	sl.lab_unit,
+							    GROUP_CONCAT(sl2.subject_code) AS prerequisites
+							FROM
+							    curriculum_subj_prereq csp
+							INNER JOIN curriculum_subject cs ON
+							    csp.curriculum_subj_id = cs.id
+							LEFT JOIN curriculum_subject cs2 ON
+							    csp.preq_subj_id = cs2.id
+							INNER JOIN subject_list sl ON
+							    cs.subject_id = sl.id
+							LEFT JOIN subject_list sl2 ON
+							    cs2.subject_id = sl2.id
+							WHERE
+							    cs.id NOT IN(
+							    SELECT
+							        subject_id
+							    FROM
+							        student_subject_list
+							    WHERE
+							        student_id = '$student_id' AND
+							    STATUS
+							        = 'PASS'
+							)
+							GROUP BY
+							    sl.subject_code
+							HAVING
+							    COUNT(csp.preq_subj_id) = 0
+							)
 
-							where csp.curriculum_subj_id not in (
+							UNION
 
-							    select subject_id
-							    from student_subject_list
-							    where student_id = '$student_id'
-							    and status = 'PASS'
-							)           
+							(SELECT
+							    sl.subject_code,
+							 	cs.year as y,
+							 	cs.trimester as t,
+							 	sl.subject_desc,
+							 	sl.lec_unit,
+							 	sl.lab_unit,
+							    GROUP_CONCAT(sl2.subject_code) AS prerequisites
+							FROM
+							    curriculum_subj_prereq csp
+							INNER JOIN curriculum_subject cs ON
+							    csp.curriculum_subj_id = cs.id
+							LEFT JOIN curriculum_subject cs2 ON
+							    csp.preq_subj_id = cs2.id
+							INNER JOIN subject_list sl ON
+							    cs.subject_id = sl.id
+							LEFT JOIN subject_list sl2 ON
+							    cs2.subject_id = sl2.id
+							LEFT JOIN student_subject_list sts ON
+							    csp.preq_subj_id = sts.subject_id
+							WHERE
+							    sts.student_id = '$student_id'
+							GROUP BY
+							    sl.subject_code
+							HAVING
+							    COUNT(csp.preq_subj_id) = COUNT(sts.subject_id)
+							)
 
-							group by sl.subject_code
+							order by y asc, t asc
 
-							having preq_count = passed
-
-							order by cs.year
-								, cs.trimester
-							
-							ASC ");
+							");
 ?>
 <div class="table-responsive mt-2">
 	<h3 class="text-center">Advised Subjects</h3>
@@ -137,9 +171,11 @@ if (isset($_POST['get_advising']) && $_SERVER['REQUEST_METHOD'] == 'POST'):
 			<tr>
 				<th>Subject</th>
 				<th>Description</th>
+				<th>Year</th>
+				<th>Trimester</th>
 				<th>Lec Unit</th>
 				<th>Lab Unit</th>
-				<th>Total Units</th>
+				<th>Total Unit</th>
 				<th>Prerequisites</th>
 			</tr>
 		</thead>
@@ -151,6 +187,8 @@ if (isset($_POST['get_advising']) && $_SERVER['REQUEST_METHOD'] == 'POST'):
 				<tr>
 					<td><?php echo $row['subject_code'] ?></td>
 					<td><?php echo $row['subject_desc'] ?></td>
+					<td><?php echo year_trimester($row['y']) ?></td>
+					<td><?php echo year_trimester($row['t']) ?></td>
 					<td><?php echo $row['lec_unit'] ?></td>
 					<td><?php echo $row['lab_unit'] ?></td>
 					<td><?php echo $row['lec_unit'] + $row['lab_unit'] ?></td>
