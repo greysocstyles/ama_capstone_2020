@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Degree Description</label>
-                                <input class="form-control" type="text" pattern="[a-zA-Z]+" title="Degree Description, ex. Bachelor of Science in Computer Science" name="degree_desc" value="<?php echo $row['degree_desc'] ?>">
+                                <input class="form-control" type="text" pattern="[a-zA-Z\s]+" title="Degree Description, ex. Bachelor of Science in Computer Science" name="degree_desc" value="<?php echo $row['degree_desc'] ?>">
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit" name="edit_degree">Update</button>

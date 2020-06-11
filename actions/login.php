@@ -38,7 +38,6 @@ if (isset($_POST['login']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
 					} elseif ($account_type == 'Student') {
 						$_SESSION['student_id'] = $id;
-						$_SESSION['username'] = $usn;
 						$_SESSION['student_name'] = $name;
 						$_SESSION['account_type'] = $account_type;
 						header('location: index.php');

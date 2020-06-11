@@ -13,8 +13,8 @@
 	endif;
 	?>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.php?menu=trimester_list">Trimester List</a></li>
-      <li class="breadcrumb-item active">Edit Trimester</li>
+        <li class="breadcrumb-item"><a href="index.php?menu=trimester_list">Trimester List</a></li>
+        <li class="breadcrumb-item active">Edit Trimester</li>
     </ol>
    	<div class="card">
         <div class="card-body">
@@ -56,10 +56,10 @@
     							</div>
     						</form>
     						<?php
-    				endwhile;
-    			endif;
-    		endif;
-    		?>
+    				    endwhile;
+                    endif;
+                endif;
+                ?>
 			</div>
 		</div>
 	</div>

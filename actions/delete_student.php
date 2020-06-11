@@ -10,5 +10,4 @@ if (isset($_POST['delete_student']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 		header('Location: index.php?menu=student_list');
 		exit;
 	}
-		 
 }

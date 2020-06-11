@@ -13,8 +13,8 @@
 		endif;
 		?>
 		<ol class="breadcrumb">
-		  <li class="breadcrumb-item"><a href="index.php?menu=trimester_list">Trimester List</a></li>
-		  <li class="breadcrumb-item active">New Trimester</li>
+			<li class="breadcrumb-item"><a href="index.php?menu=trimester_list">Trimester List</a></li>
+			<li class="breadcrumb-item active">New Trimester</li>
 		</ol>
 		<div class="card">
 			<div class="card-body">
@@ -36,12 +36,12 @@
 						if (isset($trimester_exist)):
 							echo 'Trimester exist: ';
 							foreach ($trimester_exist as $value):
-									?>
-									<strong class="text-danger"><?php echo year_trimester($value['year']) . ' year' . ', ' . year_trimester($value['trimester']) . ' trimester' ?></strong>
-									<?php
+								?>
+								<strong class="text-danger"><?php echo year_trimester($value['year']) . ' year' . ', ' . year_trimester($value['trimester']) . ' trimester' ?></strong>
+								<?php
 							endforeach;
 						endif;
-				 		?>
+						?>
 					</div>
 					<div class="form-group">
 						<button class="btn btn-primary" type="submit" name="create_trimester">Create</button>

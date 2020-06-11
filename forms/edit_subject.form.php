@@ -1,18 +1,17 @@
 <?php require_once 'actions/edit_subject.php'; ?>
-
 <?php
 
 if(isset($msg) && isset($alert_class)): ?>
-    <div class="alert alert-dismissible <?php echo $alert_class ?>">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong><?php echo $msg ?></strong>
-    </div>
+	<div class="alert alert-dismissible <?php echo $alert_class ?>">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong><?php echo $msg ?></strong>
+	</div>
 	<?php
 endif;
 ?>
 <ol class="breadcrumb">
-  <li class="breadcrumb-item active"><a href="index.php?menu=subject_list">Subject List</a></li>
-  <li class="breadcrumb-item active">Edit Subject</li>
+	<li class="breadcrumb-item active"><a href="index.php?menu=subject_list">Subject List</a></li>
+	<li class="breadcrumb-item active">Edit Subject</li>
 </ol>
 <div class="card">
 	<div class="card-body">
@@ -62,15 +61,15 @@ endif;
 							</div>
 						</div>
 						<div class="form-group">
-						    <?php 
-						    if (isset($subject_exist)):
-						        echo 'Subject Exist: ';
-						        foreach ($subject_exist as $value): ?>
-						                <strong class="text-danger"><?php echo implode($value) ?></strong>
-						                <?php
-						        endforeach;
-						    endif;
-						    ?>
+							<?php 
+							if (isset($subject_exist)):
+								echo 'Subject Exist: ';
+								foreach ($subject_exist as $value): ?>
+									<strong class="text-danger"><?php echo implode($value) ?></strong>
+									<?php
+								endforeach;
+							endif;
+							?>
 						</div>
 						<div class="form-group">
 							<button class="btn btn-primary" type="submit" name="edit_subject">Update</button>
@@ -79,8 +78,8 @@ endif;
 					</form>
 					<?php
 				endwhile;
-	 		endif;
- 		endif;
+			endif;
+		endif;
 		?>
 	</div>
 </div>
