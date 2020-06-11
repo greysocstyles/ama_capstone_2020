@@ -26,13 +26,14 @@ if (isset($_POST['edit_account']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 				$alert_class = 'alert-warning';
 
 			} else {
-				$result = query("	update account_list set 
-										name = '$name'
+				$update_admin = query("	update account_list 
+										set name = '$name'
 										, username = '$username'
 									  	,	password = '$password'
-									where id = '$edit_id'
-								");
-				if ($result) {
+										where id = '$edit_id'
+									");
+				
+				if ($update_admin ) {
 					header('location: index.php?menu=account_list');
 					exit;
 				}
@@ -46,11 +47,11 @@ if (isset($_POST['edit_account']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 				$alert_class = 'alert-warning';
 
 			} else {
-				$result2 = query("	update account_list set 
-									password = '$password'
-									where id = '$edit_id' ");
+				$update_student = query("	update account_list set 
+											password = '$password'
+											where id = '$edit_id' ");
 				
-				if ($result2) {
+				if ($update_student) {
 					header('location: index.php?menu=account_list');
 					exit;
 				}
