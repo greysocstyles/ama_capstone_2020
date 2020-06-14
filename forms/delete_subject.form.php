@@ -5,7 +5,7 @@
 	<li class="breadcrumb-item active">Delete Subject</li>
 </ol>
 <div class="card">
-	<div class="card-body bg-light">
+	<div class="card-body">
 		<?php
 
 		if (isset($_GET['delete_id'])):
@@ -22,7 +22,7 @@
 						<div class="form-group">
 							<p>Are you sure you want to Delete <strong class="text-danger"><?php echo $row['subject_code']?></strong>?</p>
 							<button class="btn btn-danger" type="submit" name="delete_subject">Yes</button>
-							<a class="btn btn-secondary active" href="index.php?menu=subject_list">No</a>
+							<a class="btn btn-secondary" href="index.php?menu=subject_list">No</a>
 						</div>
 					</form>
 					<?php

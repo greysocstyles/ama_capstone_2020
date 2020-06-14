@@ -9,7 +9,7 @@ if(isset($_GET['delete_id'])):
         $delete_id = $_GET['delete_id'];
         ?>
         <div class="card">
-            <div class="card-body bg-secondary">
+            <div class="card-body">
                 <form action="" method="POST">
                     <input type="hidden" name="delete_id" value="<?php echo $delete_id ?>"/>
                         <div class="form-group">

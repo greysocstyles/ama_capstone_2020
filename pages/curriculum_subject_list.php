@@ -20,7 +20,6 @@ if (isset($_GET['view_id'])) {
 }
 
 ?>
-
 <?php
 
 if(isset($_SESSION['msg']) && isset($_SESSION['alert'])): ?>
@@ -39,7 +38,7 @@ endif;
 
 if(isset($curriculum_list)):
 	foreach($curriculum_list as $row): ?>
-			<h2 class="text-center text-dark"><?php echo $row['degree_name'] . ', ' . $row['curriculum_year'] ?></h2>
+			<h2 class="text-center"><?php echo $row['degree_name'] . ', ' . $row['curriculum_year'] ?></h2>
 			<?php
 	endforeach;
 endif;
@@ -56,11 +55,10 @@ $year_count = query("select count(year) from curriculum_subject group by year");
 if ($year_count) {
 	$row_count = mysqli_num_rows($year_count);
 }
-
 for ($i = 1; $i <= $row_count; $i++):
 	?>
-	<div class="table-responsive mt-5">
-	<h3 class="text-center text-dark"><?php echo year_trimester($i) . ' Year'?></h3>
+	<div class="table-responsive mt-4">
+	<h3><?php echo year_trimester($i) . ' Year'?></h3>
 	<table class="table table-sm table-hover table-bordered">
 	<?php
 
@@ -106,10 +104,12 @@ for ($i = 1; $i <= $row_count; $i++):
 							<th class="text-muted">Action</th>
 						</tr>
 					</thead>
-		 <?php endif; ?>
+		 			<?php 
+		 		endif; 
+		 			?>
 					<tbody>
 						<tr>
-							<td width="5%"><?php echo $row['id'] ?></td>
+							<td width="6%"><?php echo $row['id'] ?></td>
 							<td width="35%"><?php echo $row['subject_code'] ?></td>
 							<td width="40%"><?php echo $row['prerequisite_subj'] ?></td>
 							<td width="15%">

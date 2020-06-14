@@ -15,7 +15,6 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Username</th>
-                    <th>Password</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -25,17 +24,15 @@
                                             , name
                                             , username
                                             , account_type 
-                                            , password 
                                         from account_list 
                                         where account_type = 'Admin'");
                 if ($select_admin):
                     while ($row = mysqli_fetch_assoc($select_admin)): 
                             ?>
                             <tr>
-                                <td><?php echo $row['id'] ?></td>
-                                <td><?php echo $row['name'] ?></td>
-                                <td><?php echo $row['username'] ?></td>
-                                <td><?php echo $row['password'] ?></td>
+                                <td width="10%"><?php echo $row['id'] ?></td>
+                                <td width="35%"><?php echo $row['name'] ?></td>
+                                <td width="40%"><?php echo $row['username'] ?></td>
                                 <td>
                                     <a href="index.php?edit=account&edit_id=<?php echo $row['id'] ?>&account_type=<?php echo $row['account_type'] ?>">Edit</a>
                                     <a href="index.php?delete=account&delete_id=<?php echo $row['id'] ?>&account_type=<?php echo $row['account_type'] ?>">Delete</a>
@@ -56,7 +53,6 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Username</th>
-                    <th>Password</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -66,17 +62,15 @@
                                             ,   name
                                             ,   username
                                             ,   account_type
-                                            ,   password 
                                         from account_list 
                                         where account_type = 'Student'");
                 if ($select_student):
                     while ($row = mysqli_fetch_assoc($select_student)):
                             ?>
                             <tr>
-                                <td><?php echo $row['id'] ?></td>
-                                <td><?php echo $row['name'] ?></td>
-                                <td><?php echo $row['username'] ?></td>
-                                <td><?php echo $row['password'] ?></td>
+                                <td width="10%"><?php echo $row['id'] ?></td>
+                                <td width="35%"><?php echo $row['name'] ?></td>
+                                <td width="40%"><?php echo $row['username'] ?></td>
                                 <td>
                                     <a href="index.php?edit=account&edit_id=<?php echo $row['id'] ?>&account_type=<?php echo $row['account_type'] ?>">Edit</a>
                                     <a href="index.php?delete=account&delete_id=<?php echo $row['id'] ?>&account_type=<?php echo $row['account_type'] ?>">Delete</a>

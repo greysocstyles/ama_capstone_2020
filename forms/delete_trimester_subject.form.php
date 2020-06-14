@@ -36,7 +36,7 @@ if(isset($trimester_subject_list)):
 	foreach($trimester_subject_list as $row):
 			?>
 			<div class="card">
-				<div class="card-body bg-light">
+				<div class="card-body">
 					<form action="index.php?delete=trimester_subject" method="POST">
 						<input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">
 						<input type="hidden" name="trimester_id" value="<?php echo $row['trimester_id'] ?>">

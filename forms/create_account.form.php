@@ -55,9 +55,9 @@
 			    				$student_list = query("select id, usn, name from student_list");
 			    				if ($student_list):
 			    					while ($row = mysqli_fetch_assoc($student_list)):
-					    				  ?>
-					    				  <option value="<?php echo $row['id'] ?>"><?php echo $row['usn'] . ' - ' . $row['name'] ?></option>
-					    				  <?php
+					    				?>
+					    				<option value="<?php echo $row['id'] ?>"><?php echo $row['usn'] . ' - ' . $row['name'] ?></option>
+					    				<?php
 			    					endwhile; 
 			    				endif;
 			    				?>
@@ -70,16 +70,16 @@
 		    		if (isset($_POST['select_account_type'])): 
 		    			?>
 			    		<div class="form-group">
-			    			<input class="form-control" type="text" name="password" placeholder="Password">
+			    			<input class="form-control" type="password" name="password" placeholder="Password">
 			    		</div>
 			    		<div class="form-group">
 			    			<?php
 			    			if (isset($username_exist)):
 			    				echo 'Username Exist : ';
 			    				foreach ($username_exist as $value):
-			    						?>
-			    						<strong class="text-danger"><?php echo implode($value) ?></strong>
-			    						<?php
+			    					?>
+			    					<strong class="text-danger"><?php echo implode($value) ?></strong>
+			    					<?php
 			    				endforeach;
 			    			endif;
 			    			?>
@@ -87,9 +87,9 @@
 			    			if (isset($student_exist)):
 			    				echo 'Student Exist : ';
 			    				foreach ($student_exist as $value):
-										?>
-										<strong class="text-danger"><?php echo implode(", ", $value) ?></strong>
-										<?php
+									?>
+									<strong class="text-danger"><?php echo implode(", ", $value) ?></strong>
+									<?php
 								endforeach;
 							endif; 
 							?>

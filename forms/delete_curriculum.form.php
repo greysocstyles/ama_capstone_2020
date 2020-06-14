@@ -18,7 +18,7 @@ if(isset($_GET['delete_id'])):
 			while($row = mysqli_fetch_assoc($select_curriculum)):
 				?>
 				<div class="card">
-					<div class="card-body bg-secondary">
+					<div class="card-body">
 						<form action="index.php?delete=curriculum" method="POST">
 							<input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">
 							<div class="form-group">

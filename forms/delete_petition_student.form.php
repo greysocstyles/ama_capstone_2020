@@ -31,7 +31,7 @@ if(isset($petition_student_list)):
 	foreach($petition_student_list as $row):
 			?>
 			<div class="card">
-				<div class="card-body bg-secondary">
+				<div class="card-body">
 					<form action="index.php?delete=petition_student" method="POST">
 						<input type="hidden" name="petition_id" value="<?php echo $row['req_to_open_id'] ?>">
 						<input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">

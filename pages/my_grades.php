@@ -93,7 +93,7 @@ endif;
 	</div>
 </div>
 <div class="card mt-5">
-	<div class="card-body">
+<div class="card-body">
 	<form action="index.php?v=mg&v_id=<?php echo $student_id ?>" method="POST">
 		<div class="form-row">
 			<div class="form-group col-md-10">

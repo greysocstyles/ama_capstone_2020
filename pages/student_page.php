@@ -1,6 +1,10 @@
 <div class="container">
 <?php 
 
+if(!isset($_GET['m']) && !isset($_GET['v']) && !isset($_GET['c']) && !isset($_GET['d'])) {
+	require_once 'subject_list-2.php';
+}
+
 if (isset($_GET['m'])) {
 	switch($_GET['m']) {
 		case 'sl': 

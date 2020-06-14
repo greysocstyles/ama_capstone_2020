@@ -21,12 +21,12 @@
 				<tbody>
 					<?php
 
-					$petition_subject = query("select ps.id
-													, sl.subject_code
-													, ps.status
-											from request_to_open_list ps
-											inner join subject_list sl
-											on ps.subject_id = sl.id");
+					$petition_subject = query("	select 	ps.id
+													, 	sl.subject_code
+													, 	ps.status
+												from request_to_open_list ps
+												inner join subject_list sl
+														on ps.subject_id = sl.id");
 
 					if($petition_subject):
 						while($row = mysqli_fetch_assoc($petition_subject)):

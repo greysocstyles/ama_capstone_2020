@@ -33,7 +33,7 @@ if (isset($student_subject_list)):
 	foreach ($student_subject_list as $row):
 			?>
 			<div class="card">
-				<div class="card-body bg-secondary">
+				<div class="card-body">
 					<form action="index.php?delete=student_subject&delete_id=<?php echo $row['id'] ?>" method="POST">
 						<input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>"/>
 						<div class="form-group">

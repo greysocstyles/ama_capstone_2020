@@ -19,10 +19,10 @@ $curriculum = query("select dl.degree_name
 					where cl.id = '$curriculum_id'");
 if ($curriculum):
 	while ($row = mysqli_fetch_assoc($curriculum)):
-		  ?>
-		  <h2 class="text-center"><?php echo $row['degree_name']  ?></h2>
-		  <h3 class="text-center"><?php echo $row['curriculum_year'] ?></h2>
-		  <?php
+		?>
+		<h2 class="text-center"><?php echo $row['degree_name']  ?></h2>
+		<h3 class="text-center"><?php echo $row['curriculum_year'] ?></h2>
+		<?php
 	endwhile; 
 endif;
 ?>
@@ -33,7 +33,6 @@ $year_count = query("select count(year) from curriculum_subject group by year");
 if ($year_count) {
 	$row_count = mysqli_num_rows($year_count);
 }
-
 for ($i = 1; $i <= $row_count; $i++):
 	?>
 	<div class="table-responsive mt-5">
