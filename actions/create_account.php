@@ -16,11 +16,11 @@ if (isset($_POST['create_account']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 			$msg = 'Invalid Name.';
 			$alert_class = 'alert-danger';
 
-		} elseif (!preg_match("/^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$/", $username)) {
+		} elseif (!preg_match("/^[a-z\d_]{6,20}$/i", $username)) {
 			$msg = 'Invalid Username.';
 			$alert_class = 'alert-danger';
 
-		} elseif (!preg_match("/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,26}$/", $password)) {
+		} elseif (!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/", $password)) {
 			$msg = 'Invalid Password, must contain atleast 1 or more numerical digits';
 			$alert_class = 'alert-danger';
 
@@ -69,8 +69,7 @@ if (isset($_POST['create_account']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 			$alert_class = 'alert-danger';
 
 		} else {
-			$select_student = query("	
-										select  sl.usn 
+			$select_student = query("	select  sl.usn 
 		 	 								,	sl.name	
 		 	 		 					from 	account_list al
 		 	 		 					inner 	join student_list sl 

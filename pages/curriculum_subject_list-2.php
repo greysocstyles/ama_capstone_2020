@@ -35,7 +35,7 @@ if ($year_count) {
 }
 for ($i = 1; $i <= $row_count; $i++):
 	?>
-	<div class="table-responsive mt-5">
+	<div class="table-responsive mt-4">
 	<h3><i><?php echo year_trimester($i) . ' Year'?></i></h3>
 	<table class="table table-sm table-hover table-bordered">
 	<?php

@@ -61,14 +61,14 @@ endif;
 
                     if (isset($student_selected)):
                         foreach ($student_selected as $row):
-                                ?>
-                                <h3><?php echo $row['usn'] . ', ' . $row['name'] ?></h3>
-                                <?php
+                            ?>
+                            <h3 class="text-dark"><?php echo $row['usn'] . ', ' . $row['name'] ?></h3>
+                            <?php
                         endforeach;
                     endif;
                     ?>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-4 text-right">
                     <label>No. of Subject</label>
                     <input class="form-control-sm" type="number" min="1" max="10" name="num_of_student_subject" value="<?php echo isset($_POST['num_of_student_subject']) ? $_POST['num_of_student_subject'] : 1 ?>">
                     <button class="btn btn-secondary" type="submit">Go</button>
@@ -82,9 +82,9 @@ endif;
 
                         if (isset($curriculum_subject_list)):
                             foreach ($curriculum_subject_list as $row):
-                                    ?>
-                                    <option value="<?php echo $row['id'] ?>" <?php if(isset($_POST['subject_id'][0]) && $_POST['subject_id'][0] == $row['id']) echo 'selected' ?>><?php echo $row['subject_code'] ?></option>
-                                    <?php
+                                ?>
+                                <option value="<?php echo $row['id'] ?>" <?php if(isset($_POST['subject_id'][0]) && $_POST['subject_id'][0] == $row['id']) echo 'selected' ?>><?php echo $row['subject_code'] ?></option>
+                                <?php
                             endforeach;
                         endif;
                         ?>
@@ -97,9 +97,9 @@ endif;
                         $grade_list = array('A+','A','A-','B+','B','B-','C+','C','C-','F','IC','IP');
 
                         foreach($grade_list as $grade):
-                                ?>
-                                <option value="<?php echo $grade ?>" <?php if(isset($_POST['grade'][0]) && $_POST['grade'][0] == $grade) echo 'selected' ?>><?php echo $grade ?></option>
-                                <?php
+                            ?>
+                            <option value="<?php echo $grade ?>" <?php if(isset($_POST['grade'][0]) && $_POST['grade'][0] == $grade) echo 'selected' ?>><?php echo $grade ?></option>
+                            <?php
                         endforeach;
                         ?>
                     </select>
@@ -129,15 +129,14 @@ endif;
                                 ?>
                             </select>
                         </div>
-
                         <div class="form-group col-md-4">
                             <select class="form-control" name="grade[]">
                                 <?php
 
                                 foreach($grade_list as $grade):
-                                        ?>
-                                        <option value="<?php echo $grade ?>" <?php if(isset($_POST['grade'][$i]) && $_POST['grade'][$i] == $grade) echo 'selected' ?>><?php echo $grade ?></option>
-                                        <?php
+                                    ?>
+                                    <option value="<?php echo $grade ?>" <?php if(isset($_POST['grade'][$i]) && $_POST['grade'][$i] == $grade) echo 'selected' ?>><?php echo $grade ?></option>
+                                    <?php
                                 endforeach;
                                 ?>
                             </select>
@@ -152,7 +151,7 @@ endif;
                 endif;
                 ?>
                 <div class="form-group">
-                    <button class="btn btn-primary" type="submit" name="create_student_subject">Submit</button>
+                    <button class="btn btn-primary" type="submit" name="create_student_subject">Add Subject</button>
                     <a class="btn btn-danger" href="index.php?view=student_subject&view_id=<?php echo $student_id ?>">Cancel</a>
                 </div>
             </form>

@@ -43,17 +43,22 @@ if (isset($_GET['v_id'])) {
 }
 
 ?>
-<div class="container mt-5">
-<?php
-if (isset($student)):
-	foreach ($student as $row):
-	?>
-	<h3 class="text-center text-dark"><?php echo $row['usn'] . ', ' . $row['name'] . ', ' . $row['degree_name'] . ' ' . $row['curriculum_year'] ?></h3>
-	<?php
-	endforeach;
-endif;
-?>
-<div class="card mt-5">
+<div class="container">
+<div class="card">
+	<div class="card-body bg-secondary">
+		<?php
+		if (isset($student)):
+			foreach ($student as $row):
+			?>
+			<h5 class="text-dark"><?php echo 'Name: ' . $row['name'] ?></h5>
+			<h5 class="text-dark"><?php echo 'USN: ' . $row['usn'] ?></h5>
+			<?php
+			endforeach;
+		endif;
+		?>
+	</div>
+</div>
+<div class="card mt-3">
 	<div class="card-body">
 		<div class="form-group">
 			<h3>Grades</h3>
@@ -92,7 +97,7 @@ endif;
 		</div>
 	</div>
 </div>
-<div class="card mt-5">
+<div class="card mt-3">
 <div class="card-body">
 	<form action="index.php?v=mg&v_id=<?php echo $student_id ?>" method="POST">
 		<div class="form-row">
@@ -171,6 +176,7 @@ endif;
 											");
 
 					if ($get_advising) :
+						$sum = 0;
 						while ($row = mysqli_fetch_assoc($get_advising)) :
 							?>
 							<tr>
@@ -182,6 +188,7 @@ endif;
 								<td><?php echo $row['prerequisites'] ?></td>
 							</tr>
 							<?php
+							$sum += $row['lec_unit'] + $row['lab_unit'];
 						endwhile;
 					endif;
 				endif;
@@ -189,6 +196,7 @@ endif;
 			</tbody>
 		</table>
 	</div>
+<p class="text-right">Total Units: <?php if(isset($sum)) echo $sum ?><p>
 </div>
 </div>
 </div>

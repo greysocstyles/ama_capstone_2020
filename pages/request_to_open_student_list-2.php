@@ -50,7 +50,6 @@ if (isset($_GET['v_id'])) {
 	endif;
 	?>
 	<div class="form-group">
-		<a class="btn btn-primary" href="index.php?c=jp&p_id=<?php echo $petition_id ?>">Join Petition</a>
 		<?php 
 		
 		$select_exist = query('	select student_id 
@@ -59,9 +58,13 @@ if (isset($_GET['v_id'])) {
 
 		if (mysqli_num_rows($select_exist) > 0):
 			?>
-			<a class="btn btn-danger" href="index.php?d=lp&p_id=<?php echo $petition_id ?>">Leave</a>
+			<a class="btn btn-danger" href="index.php?d=lp&p_id=<?php echo $petition_id ?>">Leave Petition</a>
 			<?php 
-		endif;
+		else:
+			?>
+			<a class="btn btn-primary" href="index.php?c=jp&p_id=<?php echo $petition_id ?>">Join Petition</a>
+			<?php 
+		endif; 
 		?>
 	</div>
 	<div class="table-responsive">
@@ -77,13 +80,13 @@ if (isset($_GET['v_id'])) {
 				<?php
 				if (isset($petition_student_list)):
 					foreach ($petition_student_list as $row):
-							?>
-							<tr>
-								<td><?php echo $row['usn'] ?></td>
-								<td><?php echo $row['name'] ?></td>
-								<td><?php echo $row['degree_name'] ?></td>
-							</tr>
-							<?php
+						?>
+						<tr>
+							<td><?php echo $row['usn'] ?></td>
+							<td><?php echo $row['name'] ?></td>
+							<td><?php echo $row['degree_name'] ?></td>
+						</tr>
+						<?php
 					endforeach;
 				endif;
 				?>

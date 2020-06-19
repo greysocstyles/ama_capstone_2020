@@ -17,7 +17,7 @@ if (isset($_POST['edit_account']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 				$msg = 'Please fill in required fields.';
 				$alert_class = 'alert-warning';
 
-			} elseif (!preg_match("/^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$/", $username)) {
+			} elseif (!preg_match("/^[a-z\d_]{6,20}$/i", $username)) {
 				$msg = 'Invalid username 8 - 20 characters only.';
 				$alert_class = 'alert-warning';
 
