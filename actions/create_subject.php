@@ -85,6 +85,7 @@ if (isset($_POST['create_subject']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 								";
 
 				$insert_values = array_map("strtoupper", $insert_values);
+				$insert_values = array_map("trim", $insert_values);
 				$insert_subject = multiple_insert($insert_header, $insert_values);
 
 				if ($insert_subject) {
