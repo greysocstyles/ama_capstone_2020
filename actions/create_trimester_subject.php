@@ -5,7 +5,7 @@ if (isset($_POST['create_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == '
 	$subject = $_POST['subject'];
 	$section = $_POST['section'];
 	$room = $_POST['room'];
-	$days = $_POST['days'];
+	$days = isset($_POST['days']) ? $_POST['days'] : '';
 	$time = $_POST['time'];
 	$professor = $_POST['professor'];
 	$insert_values = array();
@@ -20,6 +20,9 @@ if (isset($_POST['create_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == '
 			break;
 
 		} else {
+			
+			$days[$i] = implode(' - ', $days[$i]);
+			
 			$insert_values[] = "(	  '$trimester_id'
 									, '$subject[$i]'
 									, '$section[$i]'
@@ -35,7 +38,7 @@ if (isset($_POST['create_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == '
 	}
 
 	$insert_values_count = count($insert_values);
-
+	
 	if ($insert_values_count == $tri_subject_count) {
 		$sql = "	select sl.subject_code
 						 , s.section_code
