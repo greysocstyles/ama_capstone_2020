@@ -49,10 +49,10 @@ if (isset($_GET['v_id'])) {
 		<?php
 		if (isset($student)):
 			foreach ($student as $row):
-			?>
-			<h5 class="text-dark"><?php echo 'Name: ' . $row['name'] ?></h5>
-			<h5 class="text-dark"><?php echo 'USN: ' . $row['usn'] ?></h5>
-			<?php
+				?>
+				<h5 class="text-dark"><?php echo 'Name: ' . $row['name'] ?></h5>
+				<h5 class="text-dark"><?php echo 'USN: ' . $row['usn'] ?></h5>
+				<?php
 			endforeach;
 		endif;
 		?>
@@ -79,16 +79,16 @@ if (isset($_GET['v_id'])) {
 				<?php
 				if (isset($student_subject)):
 					foreach ($student_subject as $row):
-					?>
-					<tr>
-						<td><?php echo $row['subject_code'] ?></td>
-						<td><?php echo $row['subject_desc'] ?></td>
-						<td><?php echo $row['lec_unit'] + $row['lab_unit'] ?></td>
-						<td><?php echo $row['grade'] ?></td>
-						<td><?php echo $row['status'] ?></td>
-						<td><?php echo $row['add_info'] ?></td>
-					</tr>
-					<?php
+						?>
+						<tr>
+							<td><?php echo $row['subject_code'] ?></td>
+							<td><?php echo $row['subject_desc'] ?></td>
+							<td><?php echo $row['lec_unit'] + $row['lab_unit'] ?></td>
+							<td><?php echo $row['grade'] ?></td>
+							<td><?php echo $row['status'] ?></td>
+							<td><?php echo $row['add_info'] ?></td>
+						</tr>
+						<?php
 					endforeach;
 				endif;
 				?>
