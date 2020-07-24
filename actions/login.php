@@ -5,7 +5,7 @@ if (isset($_POST['login']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 	$password = $_POST['password'];
 
 	if (empty($username) && empty($password)) {
-		echo "<script>alert('Please fill in required fields.')</script>";
+		echo "Please fill in required fields.";
 
 	} else {
 			$select_exist = query("select al.student_id
@@ -44,15 +44,15 @@ if (isset($_POST['login']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 						exit;
 	
 					} else {
-							echo "<script>alert('Login failed.')</script>";
+							echo "Login failed.";
 					}
 					
 				} else {
-						echo "<script>alert('Login failed')</script>";
+						echo "Login failed.";
 				}
 
 			} else {
-					echo "<script>alert('Login failed.')</script>";
+					echo "Login failed.";
 			}
 
 	}

@@ -14,23 +14,18 @@ if(!$connect) {
 }
 
 function query($sql) {
-
 	global $connect;
 	$result = mysqli_query($connect, $sql);
 	return $result;
-
 }
 
 function multiple_insert($query, $values) {
-
 	$sql = $query;
 	$sql .= implode(", ", $values);
 	return query($sql);
-
 }
 
 function year_trimester($x) {
-
 	if($x == 1){
 		return $x . 'st';
 
@@ -47,7 +42,6 @@ function year_trimester($x) {
 }
 
 function grade_status($grade) {
-
 	$passing_grades = array('A+','A','A-','B+','B','B-','C+','C','C-');
 	$x = in_array($grade, $passing_grades);
 
@@ -68,6 +62,7 @@ function grade_status($grade) {
 }
 
 function escape($string) {
-	return htmlspecialchars($string, ENT_QUOTES);
+
+	return mysqli_real_escape_string($connect, $string);
 
 }
