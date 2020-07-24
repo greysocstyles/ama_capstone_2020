@@ -18,7 +18,7 @@ if (isset($_POST['create_subject']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 			$alert_class = 'alert-warning';
 			break;
 
-		} elseif (!preg_match('/([a-zA-Z])( )([1-9][0-9]*$)/', $code[$i])) {
+		} elseif (!preg_match('/([a-zA-Z])( )([0-9]*$)/', $code[$i])) {
 			$msg = 'Invalid Subject Code Format.';
 			$alert_class = 'alert-danger';
 			break;
