@@ -2,37 +2,40 @@
 <?php
 
 if (isset($_GET['curriculum_subj_id'])) {
-        $curriculum_subj_id = $_GET['curriculum_subj_id'];
-        $select_curri_subj = query("select sl.subject_code
-                                        ,  cs.id
-                                        ,  cs.curriculum_id
-                                    from curriculum_subject cs
-                                    inner join subject_list sl
-                                            on cs.subject_id = sl.id
-                                        where cs.id = '$curriculum_subj_id'");
+    $curriculum_subj_id = $_GET['curriculum_subj_id'];
+    $select_curri_subj = query("select sl.subject_code
+                                    ,  cs.id
+                                    ,  cs.curriculum_id
+                                from curriculum_subject cs
+                                inner join subject_list sl
+                                    on cs.subject_id = sl.id
+                                where cs.id = '$curriculum_subj_id'");
 
-        if ($select_curri_subj) {
-            $curriculum_subject = array();
-            while($row = mysqli_fetch_assoc($select_curri_subj)) {
-                $curriculum_subject[] = $row;
-                $curriculum_id = $row['curriculum_id'];
+    if ($select_curri_subj) {
+        $curriculum_subject = array();
 
-            }
+        while($row = mysqli_fetch_assoc($select_curri_subj)) {
+            $curriculum_subject[] = $row;
+            $curriculum_id = $row['curriculum_id'];
+
         }
+    }
 
-        $select_subject = query("select cs.id, sl.subject_code
-                                 from curriculum_subject cs
-                                 inner join subject_list sl
-                                			on cs.subject_id = sl.id
-                                 where cs.curriculum_id = '$curriculum_id'");
+    $select_subject = query("select cs.id
+                                ,   sl.subject_code
+                            from curriculum_subject cs
+                            inner join subject_list sl
+                                on cs.subject_id = sl.id
+                            where cs.curriculum_id = '$curriculum_id'");
 
-        if ($select_subject) {
-            $subject_list = array();
-            while($row = mysqli_fetch_assoc($select_subject)) {
-                 $subject_list[] = $row;
+    if ($select_subject) {
+        $subject_list = array();
+        
+        while($row = mysqli_fetch_assoc($select_subject)) {
+           $subject_list[] = $row;
 
-            }
-        }
+       }
+   }
 
 }
 

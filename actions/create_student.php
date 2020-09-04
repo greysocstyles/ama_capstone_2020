@@ -4,6 +4,7 @@ if (isset($_POST['create_student']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 	$usn = $_POST['usn'];
 	$name = $_POST['name'];
 	$curriculum = $_POST['curriculum'];
+
 	$insert_values = array();
 	$filter_values = array();
 	$student_count = count($usn);
@@ -16,12 +17,12 @@ if (isset($_POST['create_student']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 			break;
 
 		} elseif (!preg_match("/^[1-9][0-9]{10,13}$/", $usn[$i])) {
-			$msg = 'Invalid USN characters.';
+			$msg = 'Invalid USN.';
 			$alert_class = 'alert-danger';
 			break;
 
 		} elseif (!preg_match("/^[a-zA-Z\s]{6,50}+$/i", $name[$i])) {
-			$msg = 'Invalid Name, 6 or more characters only.';
+			$msg = 'Invalid Name, 6 or more characters.';
 			$alert_class = 'alert-warning';
 			break;
 
@@ -32,7 +33,9 @@ if (isset($_POST['create_student']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	}
 
+
 	$insert_values_count = count($insert_values);
+
 
 	if ($insert_values_count == $student_count) {
 		$sql = 'select usn, name from student_list where ';
@@ -50,6 +53,7 @@ if (isset($_POST['create_student']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 				
 			} else {
 				$insert_header = "insert into student_list (usn, name, curriculum_id) values ";
+				$insert_values = array_map('strtoupper', $insert_values);
 				$insert_student = multiple_insert($insert_header, $insert_values);
 
 				if ($insert_student) {

@@ -2,20 +2,25 @@
 
 <div class="row">
     <div class="col-md-8 m-auto">
+    <!-- alert msg -->
 	<?php
 
-	if(isset($msg) && isset($alert_class)): ?>
+	if(isset($msg) && isset($alert_class)) : ?>
+
 		<div class="alert alert-dismissible <?php echo $alert_class ?>">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<strong><?php echo $msg ?></strong>
 		</div>
-		<?php
-	endif;
-	?>
+
+	<?php endif; ?>
+    <!-- end of alert msg -->
+
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php?menu=trimester_list">Trimester List</a></li>
         <li class="breadcrumb-item active">Edit Trimester</li>
     </ol>
+
+    <!-- card-div -->
    	<div class="card">
         <div class="card-body">
 			<div class="card-title"><h2>Edit Trimester</h2></div>
@@ -23,10 +28,9 @@
 
 			if (isset($_GET['edit_id'])):
 				$edit_id = $_GET['edit_id'];
-				$select_tl = query("select * from trimester_list where id = '$edit_id'");
-				if ($select_tl):
-					while ($row = mysqli_fetch_assoc($select_tl)):
-    					    ?>
+				$trimester_list = query("select * from trimester_list where id = '$edit_id'");
+				if ($trimester_list):
+					while ($row = mysqli_fetch_assoc($trimester_list)): ?>
     						<form action="index.php?edit=trimester&edit_id=<?php echo $row['id'] ?>" method="POST">
     							<input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">
     							<div class="form-group">
@@ -37,30 +41,36 @@
     							 	<label>Trimester</label>
     							 	<input class="form-control" type="number" name="trimester" value="<?php echo $row['trimester'] ?>">
     							</div>
+
+                                <!-- error msg -->
     							<div class="form-group">
     							    <?php 
     							    
-    							    if (isset($trimester_exist)):
+    							    if (isset($trimester_exist)) :
     							        echo 'Trimester Exist: ';
-    							        foreach ($trimester_exist as $value): 
-    							                ?>
-    							                <strong class="text-danger"><?php echo year_trimester($value['year']) . ' Year'  . ', ' . year_trimester($value['trimester']) . ' Trimester' ?></strong>
-    							                <?php
+    							        foreach ($trimester_exist as $value) : ?>
+
+                                                <strong class="text-danger"><?php echo year_trimester($value['year']) . ' Year'  . ', ' . year_trimester($value['trimester']) . ' Trimester' ?>
+                                                </strong>
+                                                <?php
     							        endforeach;
     							    endif;
     							    ?>
     							</div>
+                                <!-- end of error msg -->
+                                
     							<div class="form-group">
     							 	<button class="btn btn-primary" type="submit" name="edit_trimester">Update</button>
     							 	<a class="btn btn-danger" href="index.php?menu=trimester_list">Cancel</a>
     							</div>
     						</form>
     						<?php
-    				    endwhile;
-                    endif;
+    				endwhile;
                 endif;
-                ?>
+            endif;
+            ?>
 			</div>
 		</div>
+        <!-- end of card-div -->
 	</div>
 </div>

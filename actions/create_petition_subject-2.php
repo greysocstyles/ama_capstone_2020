@@ -2,6 +2,7 @@
 
 if (isset($_POST['create_petition']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 	$petition_subject = $_POST['petition_subject'];
+	
 	$select_exist = query("	select subject_code 
 						 	from request_to_open_list rto 
 						 	inner join subject_list sl 

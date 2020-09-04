@@ -13,7 +13,7 @@ if (isset($_POST['edit_degree']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         $msg = 'Invalid characters on Degree Name.';
         $alert_class = 'alert-danger';
 
-    } elseif (!preg_match("/^[a-zA-Z0\s]+$/i", $degree_desc)) {
+    } elseif (!preg_match("/^[a-zA-Z\s]+$/i", $degree_desc)) {
         $msg = 'Invalid characters on Degree Description.';
         $alert_class = 'alert-danger';
         

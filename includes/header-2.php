@@ -20,7 +20,7 @@
 				</li>
 				<li class="nav-item dropdown">
 				    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['student_name'] ?></a>
-				    <div class="dropdown-menu" style="">
+				    <div class="dropdown-menu">
 				      <a class="dropdown-item" href="index.php?v=mg&v_id=<?php echo $_SESSION['student_id'] ?>">My Grades</a>
 				      <div class="dropdown-divider"></div>
 				      <a class="dropdown-item" href="actions/logout.php">Log out</a>

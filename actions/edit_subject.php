@@ -13,7 +13,7 @@ if (isset($_POST['edit_subject']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 		$msg = 'please fill in required fields.';
 		$alert_class = 'alert-warning';
 
-	} elseif (!preg_match('/([a-zA-Z])( )([1-9][0-9]*$)/', $subject_code)) {
+	} elseif (!preg_match('/([a-zA-Z])( )([0-9][0-9]*$)/', $subject_code)) {
 		$msg = 'Invalid Subject Code Format.';
 		$alert_class = 'alert-danger';
 
@@ -26,8 +26,7 @@ if (isset($_POST['edit_subject']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 		$alert_class = 'alert-warning';
 
 	} else {
-		$update_subject = query("
-									UPDATE  subject_list SET
+		$update_subject = query("	UPDATE  subject_list SET
 											subject_code = '$subject_code'
 										, 	subject_name = '$subject_name'
 										, 	subject_desc = '$subject_desc'

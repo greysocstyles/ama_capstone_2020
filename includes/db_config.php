@@ -13,17 +13,21 @@ if(!$connect) {
 
 }
 
+/* functions */
+
 function query($sql) {
 	global $connect;
 	$result = mysqli_query($connect, $sql);
 	return $result;
 }
 
+
 function multiple_insert($query, $values) {
 	$sql = $query;
 	$sql .= implode(", ", $values);
 	return query($sql);
 }
+
 
 function year_trimester($x) {
 	if($x == 1){
@@ -38,7 +42,6 @@ function year_trimester($x) {
 	} else {
 		return $x . 'th';
 	}
-
 }
 
 function grade_status($grade) {
@@ -58,11 +61,18 @@ function grade_status($grade) {
 		return 'INPROGRESS';
 
 	}
-
 }
 
 function escape($string) {
+	global $connect;
 
 	return mysqli_real_escape_string($connect, $string);
 
 }
+
+function dumper($var) {
+
+	return die(var_dump($var));
+
+}
+

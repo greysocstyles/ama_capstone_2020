@@ -14,7 +14,7 @@ if (isset($_GET['edit_id'])):
 	}
 
 	$select_st = query("select  al.id
-						    ,   al.password 
+						    ,   al.password
 						    ,	sl.usn
 						    ,   sl.name
 						from account_list al 

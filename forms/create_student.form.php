@@ -18,20 +18,23 @@ if ($select_cl) {
 }
 
 ?>
+
 <?php
 
-if(isset($msg) && isset($alert_class)): ?>
+if(isset($msg) && isset($alert_class)) : ?>
+
 	<div class="alert alert-dismissible <?php echo $alert_class ?>">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<strong><?php echo $msg ?></strong>
 	</div>
-	<?php
-endif;
-?>
+
+<?php endif; ?>
+
 <ol class="breadcrumb">
   <li class="breadcrumb-item active"><a href="index.php?menu=student_list">Student List</a></li>
   <li class="breadcrumb-item active">New Student</li>
 </ol>
+
 <div class="card">
 	<div class="card-body">
 		<form action="index.php?new=student" method="POST">
@@ -50,16 +53,20 @@ endif;
 					<input class="form-control" type="text" pattern="\d*" minlength="11" maxlength="12" title="USN ex. 15001372000" name="usn[]" placeholder="USN" value="<?php if(isset($_POST['usn'][0])) echo $_POST['usn'][0] ?>">
 				</div>
 				<div class="form-group col-md-4">
-					<input class="form-control" type="text" pattern="^[a-zA-Z\s]+$" title="Student Name ex. Socrates Binos" name="name[]" placeholder="Student Name" value="<?php if(isset($_POST['name'][0])) echo $_POST['name'][0] ?>">
+					<input class="form-control" type="text" pattern="[a-zA-Z\s]+$" title="Student Name ex. Socrates Binos" name="name[]" placeholder="Student Name" value="<?php if(isset($_POST['name'][0])) echo $_POST['name'][0] ?>">
 				</div>
 				<div class="form-group col-md-4">
 					<select class="form-control" name="curriculum[]">
 						<option value="">Select Curriculum</option>
 						<?php
 
-						if(isset($curriculum_list)):
-							foreach($curriculum_list as $row): ?>
-									<option value="<?php echo $row['id'] ?>" <?php if(isset($_POST['curriculum'][0]) && $_POST['curriculum'][0] == $row['id']) echo 'selected' ?>><?php echo $row['curriculum_year'] . ' ' . $row['degree_name']  ?></option>
+						if(isset($curriculum_list)) :
+							foreach ($curriculum_list as $row) : ?>
+
+									<option value="<?php echo $row['id'] ?>" <?php if(isset($_POST['curriculum'][0]) && $_POST['curriculum'][0] == $row['id']) echo 'selected' ?>><?php echo $row['curriculum_year'] . ' ' . $row['degree_name']  ?>
+										
+									</option>
+
 									<?php
 							endforeach;
 						endif;
@@ -69,14 +76,14 @@ endif;
 			</div>
 			<?php
 
-			if(isset($_POST['num_of_student'])):
-				for($i = 1; $i < $_POST['num_of_student']; $i++): ?>
+			if(isset($_POST['num_of_student'])) :
+				for($i = 1; $i < $_POST['num_of_student']; $i++) : ?>
 					<div class="form-row">
 						<div class="form-group col-md-4">
 							<input class="form-control" type="text" pattern="\d*" minlength="11" maxlength="12" title="USN ex. 15001372000" name="usn[]" placeholder="USN" value="<?php if(isset($_POST['usn'][$i])) echo $_POST['usn'][$i] ?>">
 						</div>
 						<div class="form-group col-md-4">
-							<input class="form-control" type="text" pattern="^[a-zA-Z\s]+$"  title="Student name ex. Socrates Binos" name="name[]" placeholder="Student Name" value="<?php if(isset($_POST['name'][$i])) echo $_POST['name'][$i] ?>">
+							<input class="form-control" type="text" pattern="[a-zA-Z\s]+$"  title="Student name ex. Socrates Binos" name="name[]" placeholder="Student Name" value="<?php if(isset($_POST['name'][$i])) echo $_POST['name'][$i] ?>">
 						</div>
 						<div class="form-group col-md-4">
 							<select class="form-control" name="curriculum[]">

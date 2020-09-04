@@ -1,12 +1,16 @@
 <div class="container">
 <?php 
-
+// Default Page
 if(!isset($_GET['m']) && !isset($_GET['v']) && !isset($_GET['c']) && !isset($_GET['d'])) {
+
 	require_once 'subject_list-2.php';
+
 }
 
+// Menu
 if (isset($_GET['m'])) {
 	switch($_GET['m']) {
+
 		case 'sl': 
 				require_once 'subject_list-2.php';
 				break;
@@ -24,9 +28,10 @@ if (isset($_GET['m'])) {
 				break;
 	}
 }
-
+// View
 if (isset($_GET['v'])) {
 	switch($_GET['v']) {
+
 		case 'tsl':
 				require_once 'trimester_subject_list-2.php';
 				break;
@@ -43,9 +48,10 @@ if (isset($_GET['v'])) {
 				break;
 	}
 }
-
+// Create
 if (isset($_GET['c'])) {
 	switch($_GET['c']) {
+
 		case 'cp':
 				require_once 'forms/create_petition_subject-2.form.php';
 				break;
@@ -55,9 +61,10 @@ if (isset($_GET['c'])) {
 				break;
 	}
 }
-
+// Delete
 if(isset($_GET['d'])) {
 	switch($_GET['d']) {
+		
 		case 'lp':
 				require_once 'forms/leave_petition.form.php';
 				break;

@@ -12,7 +12,7 @@ if (isset($_POST['create_degree']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 		$msg = 'Invalid characters on Degree Name.';
 		$alert_class = 'alert-danger';
 
-	} elseif (!preg_match("/^[a-zA-Z0\s]+$/i", $degree_desc)) {
+	} elseif (!preg_match("/^[a-zA-Z\s]+$/i", $degree_desc)) {
 		$msg = 'Invalid characters on Degree Description.';
 		$alert_class = 'alert-danger';
 
@@ -29,7 +29,7 @@ if (isset($_POST['create_degree']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 		if ($row_count > 0) {
 			$msg = 'Degree already exists.';
 			$alert_class = 'alert-warning';
-			
+
 		} else {
 			$insert_degree = query("INSERT into degree_list (degree_name, degree_desc) values ('$degree_name', '$degree_desc')");
 

@@ -1,8 +1,11 @@
 <?php require_once 'actions/delete_trimester.php'; ?>
+
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a href="index.php?menu=trimester_list">Trimester List</a></li>
   <li class="breadcrumb-item active">Delete Trimester</li>
 </ol>
+
+<!-- card-div -->
 <div class="card">
   <div class="card-body">
     <?php
@@ -27,3 +30,4 @@
     ?>
   </div>
 </div>
+<!-- end of card-div -->

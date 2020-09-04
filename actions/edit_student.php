@@ -3,10 +3,10 @@
 if (isset($_POST['edit_student']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 	$edit_id = $_POST['edit_id'];
 	$usn = $_POST['usn'];
-	$name = $_POST['name'];
+	$name = strtoupper($_POST['name']);
 	$curriculum = $_POST['curriculum'];
 
-	if (empty($usn) || empty($usn || empty($curriculum))) {
+	if (empty($usn) || empty($usn) || empty($curriculum)) {
 		$msg = 'Please fill in required fields.';
 		$alert_class = 'alert-warning';
 
@@ -14,8 +14,8 @@ if (isset($_POST['edit_student']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 		$msg = 'Invalid name characters';
 		$alert_class = 'alert-danger';
 
-	} elseif (!preg_match('/^[1-9][0-9]{0,11}$/', $usn)) {
-		$msg = 'Invalid USN characters.';
+	} elseif (!preg_match('/^[1-9][0-9]{10,13}$/', $usn)) {
+		$msg = 'Invalid USN.';
 		$alert_class = 'alert-danger';
 
 	} else {

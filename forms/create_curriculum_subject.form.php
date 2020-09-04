@@ -1,13 +1,16 @@
 <?php require_once 'actions/create_curriculum_subject.php'; ?>
+<!-- alert msg -->
 <?php
-if(isset($msg) && isset($alert_class)): ?>
+
+if(isset($msg) && isset($alert_class)) : ?>
+
 	<div class="alert alert-dismissible <?php echo $alert_class ?>">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<strong><?php echo $msg ?></strong>
 	</div>
-	<?php
-endif;
-?>
+
+<?php endif; ?>
+<!-- end of alert msg -->
 <?php
 
 if (isset($_GET['curriculum_id'])) {
@@ -29,11 +32,13 @@ if (isset($_GET['curriculum_id'])) {
 	}
 }
 ?>
+
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a href="index.php?menu=curriculum_list">Curriculum List</a></li>
   <li class="breadcrumb-item"><a href="index.php?view=curriculum_subject&view_id=<?php echo $curriculum_id ?>">Curriculum Subject List</a></li>
   <li class="breadcrumb-item">New Curriculum Subject</li>
 </ol>
+<!-- card-div -->
 <div class="card">
 	<div class="card-body">
 		<form action="index.php?new=curriculum_subject&curriculum_id=<?php echo $curriculum_id ?>" method="POST">
@@ -54,49 +59,54 @@ if (isset($_GET['curriculum_id'])) {
 						<option value=""> Select Subject </option>
 						<?php
 
-						if(isset($subject_list)):
-							foreach($subject_list as $row):
-								?>
-								<option value="<?php echo $row['id'] ?>" <?php if(isset($_POST['curriculum_subj'][0]) && $_POST['curriculum_subj'][0] == $row['id']) echo 'selected' ?>><?php echo $row['subject_code'] ?></option>
-								<?php
+						if(isset($subject_list)) :
+							foreach($subject_list as $row) : ?>
+
+									<option value="<?php echo $row['id'] ?>" <?php if(isset($_POST['curriculum_subj'][0]) && $_POST['curriculum_subj'][0] == $row['id']) echo 'selected' ?>><?php echo $row['subject_code'] ?>
+									</option>
+									
+									<?php
 							endforeach;
 						endif;
 						?>
 					</select>
 				</div>
+				<!-- year -->
 				<div class="form-group col-md-4">
-					<input class="form-control" name="year[]" type="text" placeholder="Year" value="<?php if(isset($_POST['year'][0])) echo $_POST['year'][0] ?>">
+					<input class="form-control" name="year[]" type="number" min="1" max="3" placeholder="Year" value="<?php if(isset($_POST['year'][0])) echo $_POST['year'][0] ?>">
 				</div>
+				<!-- trimester -->
 				<div class="form-group col-md-4">
-					<input class="form-control" name="trimester[]" type="text" placeholder="Trimester" value="<?php if(isset($_POST['trimester'][0])) echo $_POST['trimester'][0] ?>">
+					<input class="form-control" name="trimester[]" type="number" min="1" max="3" placeholder="Trimester" value="<?php if(isset($_POST['trimester'][0])) echo $_POST['trimester'][0] ?>">
 				</div>
 			</div>
 			<?php
 
-			if(isset($_POST['num_of_curri_subj'])):
-				for($i = 1; $i < $_POST['num_of_curri_subj']; $i++):
-					?>
+			if (isset($_POST['num_of_curri_subj'])) :
+				for ($i = 1; $i < $_POST['num_of_curri_subj']; $i++) : ?>
 					<div class="form-row">
 						<div class="form-group col-md-4">
 							<select class="form-control" name="curriculum_subj[]">
 								<option value=""> Select Subject </option>
 								<?php
 
-								if(isset($subject_list)):
-									foreach($subject_list as $row):
-										?>
-										<option value="<?php echo $row['id'] ?>" <?php if(isset($_POST['curriculum_subj'][$i]) && $_POST['curriculum_subj'][$i] == $row['id']) echo 'selected' ?>><?php echo $row['subject_code'] ?></option>
-										<?php
+								if (isset($subject_list)) :
+									foreach ($subject_list as $row) : ?>
+
+											<option value="<?php echo $row['id'] ?>" <?php if(isset($_POST['curriculum_subj'][$i]) && $_POST['curriculum_subj'][$i] == $row['id']) echo 'selected' ?>><?php echo $row['subject_code'] ?>
+											</option>
+
+											<?php
 									endforeach;
 								endif;
 								?>
 							</select>
 						</div>
 						<div class="form-group col-md-4">
-							<input class="form-control" name="year[]" type="text" placeholder="Year" value="<?php if(isset($_POST['year'][$i])) echo $_POST['year'][$i] ?>">
+							<input class="form-control" name="year[]" type="number" min="1" max="3" placeholder="Year" value="<?php if(isset($_POST['year'][$i])) echo $_POST['year'][$i] ?>">
 						</div>
 						<div class="form-group col-md-4">
-							<input class="form-control" name="trimester[]" type="text" placeholder="Trimester" value="<?php if(isset($_POST['trimester'][$i])) echo $_POST['trimester'][$i] ?>">
+							<input class="form-control" name="trimester[]" type="number" min="1" max="3" placeholder="Trimester" value="<?php if(isset($_POST['trimester'][$i])) echo $_POST['trimester'][$i] ?>">
 						</div>
 					</div>
 					<?php
@@ -112,3 +122,4 @@ if (isset($_GET['curriculum_id'])) {
 		</form>
 	</div>
 </div>
+<!-- end of card-div -->

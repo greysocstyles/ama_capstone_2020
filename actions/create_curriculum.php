@@ -7,9 +7,11 @@ if (isset($_POST['create_curriculum']) && $_SERVER['REQUEST_METHOD'] == 'POST') 
 	if (empty($degree_name) || empty($curriculum_year)) {
 		$msg = 'Please fill in required fields.';
 		$alert_class = 'alert-warning';
+
 	} elseif (!preg_match('/([0-9])(-)([0-9]*$)/', $curriculum_year)) {
 		$msg = 'Invalid Curriculum Year.';
 		$alert_class = 'alert-danger';
+		
 	} else {
 		$select_exist = query(" select  dl.degree_name
 									,	cl.curriculum_year

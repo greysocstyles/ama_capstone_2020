@@ -5,9 +5,10 @@ if (isset($_POST['create_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == '
 	$subject = $_POST['subject'];
 	$section = $_POST['section'];
 	$room = $_POST['room'];
-	$days = isset($_POST['days']) ? $_POST['days'] : '';
+	$days = $_POST['days'] ?? $_POST['days'] ?? '';
 	$time = $_POST['time'];
 	$professor = $_POST['professor'];
+	
 	$insert_values = array();
 	$filter_values = array();
 	$tri_subject_count = count($subject);
@@ -20,7 +21,6 @@ if (isset($_POST['create_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == '
 			break;
 
 		} else {
-			
 			$days[$i] = implode(' - ', $days[$i]);
 			
 			$insert_values[] = "(	  '$trimester_id'
@@ -40,14 +40,15 @@ if (isset($_POST['create_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == '
 	$insert_values_count = count($insert_values);
 	
 	if ($insert_values_count == $tri_subject_count) {
-		$sql = "	select sl.subject_code
+		$sql =  "	select sl.subject_code
 						 , s.section_code
 					from trimester_subject_list tsl
 					inner join subject_list sl
 								on tsl.subject_id = sl.id
 					inner join section_list s
 								on tsl.section_id = s.id
-					where tsl.trimester_id = '$trimester_id' and ";
+					where tsl.trimester_id = '$trimester_id' and 
+				";
 
 		$sql .= implode(" or ", $filter_values);
 		$select_exist = query($sql);
@@ -63,9 +64,9 @@ if (isset($_POST['create_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == '
 				
 			} else {
 				$insert_header = "INSERT into trimester_subject_list (trimester_id, subject_id, section_id, room, days, time, professor) VALUES";
-				$insert_tri_subject = multiple_insert($insert_header, $insert_values);
+				$insert_trimester_subject = multiple_insert($insert_header, $insert_values);
 
-				if ($insert_tri_subject) {
+				if ($insert_trimester_subject) {
 					$_SESSION['msg'] = 'Create Success!.';
 					$_SESSION['alert'] = 'alert-success';
 					header('Location: index.php?view=trimester_subject' . '&view_id=' . $trimester_id);

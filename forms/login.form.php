@@ -3,11 +3,11 @@
 <form action="index.php" method="POST">
 	<div class="row">
 		<div class="col-md-4 m-auto">
-			<div class="card">
+			<div class="card mt-5">
 				<div class="card-header bg-info">
 					<h5 class="text-light"><img src="img/ama-logo.jpg" width="27" height="26" alt="" class="d-inline-block align-top"/> AMA Advising & Scheduling</h5>
 				</div>
-				<div class="card-body">
+				<div class="card-body mt-1">
 					<div class="form-group">
 						<input class="form-control" type="text" name="username" id="username" placeholder="Username">
 					</div>

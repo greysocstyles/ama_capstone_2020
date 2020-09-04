@@ -5,6 +5,7 @@ if (isset($_POST['create_curriculum_subject']) && $_SERVER['REQUEST_METHOD'] == 
     $subject = $_POST['curriculum_subj'];
     $year = $_POST['year'];
     $trimester = $_POST['trimester'];
+
     $insert_values_cs = array();
     $subject_count = count($subject);
 
@@ -15,18 +16,19 @@ if (isset($_POST['create_curriculum_subject']) && $_SERVER['REQUEST_METHOD'] == 
             $alert_class = 'alert-danger';
             break;
 
-        } elseif (!preg_match("/[0-9]/", $year[$i])) {
-            $msg = 'Invalid Year 1 - 3 only.';
+        } elseif (!preg_match("/[1-3]/", $year[$i])) {
+            $msg = 'Invalid Year.';
             $alert_class = 'alert-danger';
             break;
 
-        } elseif (!preg_match("/[0-9]/", $trimester[$i])) {
-            $msg = 'Invalid Trimester 1 - 3 only.';
+        } elseif (!preg_match("/[1-3]/", $trimester[$i])) {
+            $msg = 'Invalid Trimester.';
             $alert_class = 'alert-danger';
             break;
 
         } else {
             $insert_values_cs[] = "('$curriculum', '$subject[$i]', '$year[$i]', '$trimester[$i]')";
+            
         }
         
     }

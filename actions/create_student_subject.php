@@ -6,6 +6,7 @@ if (isset($_POST['create_student_subject']) && $_SERVER['REQUEST_METHOD'] == 'PO
     $grade = $_POST['grade'];
     $status = $_POST['status'];
     $add_info = $_POST['add_info'];
+    
     $insert_values = array();
     $subject_count = count($subject);
 

@@ -1,9 +1,9 @@
 <?php
 
 if (isset($_POST['edit_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
-    $edit_id = (int)$_POST['edit_id'];
-    $trimester_id = (int)$_POST['trimester_id'];
-    $subject_id = (int)$_POST['subject_id'];
+    $edit_id = $_POST['edit_id'];
+    $trimester_id = $_POST['trimester_id'];
+    $subject_id = $_POST['subject_id'];
     $section_id = $_POST['section_id'];
     $room = $_POST['room'];
     $days = $_POST['days'];
@@ -20,6 +20,8 @@ if (isset($_POST['edit_trimester_subject']) && $_SERVER['REQUEST_METHOD'] == 'PO
                                 from trimester_subject_list
                                 where id = '$edit_id'
                             ");
+
+        $days = implode(' - ', $days);
 
         if ($edit_value) {
             while ($row = mysqli_fetch_assoc($edit_value)) {

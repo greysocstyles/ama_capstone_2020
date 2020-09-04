@@ -8,11 +8,7 @@ if (isset($_POST['create_section']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 		$msg = 'Please fill in all required fields.';
 		$alert_class = 'alert-warning';
 
-	} elseif (strlen($section) < 3) {
-		$msg = 'Invalid length.';
-		$alert_class = 'alert-warning';
-
-	} elseif (!preg_match("/[a-zA-Z0-9]+/", $section)) {
+	} elseif (!preg_match('/[a-zA-Z0-9]{4,}+/', $section)) {
 		$msg = 'Invalid Section code.';
 		$alert_class = 'alert-danger';
 

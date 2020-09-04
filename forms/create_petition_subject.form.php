@@ -1,19 +1,25 @@
 <?php require_once 'actions/create_petition_subject.php'; ?>
+
 <div class="row">
 	<div class="col-md-8 m-auto">
+		<!-- alert msg -->
 		<?php
-		if(isset($msg) && isset($alert_class)): ?>
+
+		if(isset($msg) && isset($alert_class)) : ?>
+
 			<div class="alert alert-dismissible <?php echo $alert_class?>">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
 				<strong><?php echo $msg ?></strong>
 			</div>
-			<?php
-		endif;
-		?>
+
+		<?php endif; ?>
+		<!-- end of alert msg -->
+
 		<ol class="breadcrumb">
 		  <li class="breadcrumb-item"><a href="index.php?menu=petition_list">Request To Open List</a></li>
 		  <li class="breadcrumb-item active">New Petition</li>
 		</ol>
+
 		<div class="card">
 			<div class="card-body">
 				<div class="form-group">
@@ -25,18 +31,16 @@
 						<select class="form-control" name="petition_subject">
 							<option value="">Select Subject</option>
 							<?php
+
 							$petition_subjects = query("select id, subject_code 
 														from subject_list 
-														where subject_status = 0
-														and not exists (select subject_id 
-																		from request_to_open_list
-																		where status = 'Pending')");
+														where subject_status = 0");
 
-							if ($petition_subjects):
-								while ($row = mysqli_fetch_assoc($petition_subjects)):
-									?>
-									<option value="<?php echo $row['id'] ?>"><?php echo $row['subject_code'] ?></option>
-									<?php
+							if ($petition_subjects) :
+								while ($row = mysqli_fetch_assoc($petition_subjects)) : ?>
+
+										<option value="<?php echo $row['id'] ?>"><?php echo $row['subject_code'] ?></option>
+										<?php
 								endwhile;
 							endif;
 							?>
@@ -46,12 +50,13 @@
 						<label>Status</label>
 						<select class="form-control" name="status">
 							<?php
+
 							$petition_status = array('Pending', 'Approved', 'Declined');
 
-							foreach($petition_status as $value):
-								?>
-								<option value="<?php echo $value ?>"><?php echo $value ?></option>
-								<?php
+							foreach ($petition_status as $value) : ?>
+
+									<option value="<?php echo $value ?>"><?php echo $value ?></option>
+									<?php
 							endforeach;
 							?>
 						</select>

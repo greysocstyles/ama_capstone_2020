@@ -7,6 +7,7 @@ if (isset($_POST['create_subject']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 	$status = $_POST['subject_status'];
 	$lec = $_POST['lec_unit'];
 	$lab = $_POST['lab_unit'];
+
 	$insert_values = array();
 	$filter_values = array();
 	$subject_count = count($code);
@@ -56,7 +57,10 @@ if (isset($_POST['create_subject']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 	}
 
+
 	$insert_values_count = count($insert_values);
+
+
 
 	if ($insert_values_count == $subject_count) {
 		$sql = "select subject_code from subject_list where ";
@@ -67,9 +71,9 @@ if (isset($_POST['create_subject']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 			$row_count = mysqli_num_rows($select_exist);
 
 			if ($row_count > 0) {
-				$subj_exists = array();
+				$existing_subject = array();
 				while ($row = mysqli_fetch_assoc($select_exist)) {
-					$subj_exists[] = $row;
+					$existing_subject[] = $row;
 				}
 			} else {
 				$insert_header = "	INSERT into subject_list
@@ -85,7 +89,6 @@ if (isset($_POST['create_subject']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 								";
 
 				$insert_values = array_map("strtoupper", $insert_values);
-				$insert_values = array_map("trim", $insert_values);
 				$insert_subject = multiple_insert($insert_header, $insert_values);
 
 				if ($insert_subject) {

@@ -3,6 +3,7 @@
 if (isset($_POST['edit_account']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 	$edit_id = $_POST['edit_id'];
 	$z = query("select account_type from account_list where id = '$edit_id'");
+	
 	if ($z) {
 		while ($row = mysqli_fetch_assoc($z)) {
 			$account_type = $row['account_type'];

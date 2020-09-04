@@ -9,7 +9,9 @@ if (isset($_POST['add_prerequisite']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 	$prerequisite_count = count($prerequisite_subject);
 
 	for ($i = 0; $i < $prerequisite_count; $i++) {
+
 		$insert_values[] = "('$curriculum_subj_id', '$prerequisite_subject[$i]')";
+
 	}
 
 	$sql = "INSERT INTO curriculum_subj_prereq (curriculum_subj_id, preq_subj_id) VALUES";
@@ -20,5 +22,7 @@ if (isset($_POST['add_prerequisite']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['alert'] = 'alert-success';
 		header('location: index.php?view=curriculum_subject&view_id=' . $curriculum_id);
 		exit;
+
 	}
+
 }
