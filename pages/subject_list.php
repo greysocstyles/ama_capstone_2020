@@ -52,7 +52,7 @@ if(isset($_SESSION['msg']) && isset($_SESSION['alert'])) : ?>
 								<td><?php echo $subject['subject_code'] ?></td>
 								<td><?php echo $subject['subject_name'] ?></td>
 								<td><?php echo $subject['subject_desc'] ?></td>
-								<td><?php echo ($subject['subject_status']) ? 'Enabled' : 'Disabled' ?></td>
+								<td class="text-center"><?php echo $subject['subject_status'] ? '<i class="fa fa-check text-success" aria-hidden="true"> Enabled</i>' : '<i class="fa fa-times text-secondary" aria-hidden="true"> Disabled</i>' ?></td>
 								<td><?php echo $subject['lec_unit'] ?></td>
 								<td><?php echo $subject['lab_unit'] ?></td>
 								<td><?php echo $subject['lec_unit'] + $subject['lab_unit'] ?></td>
