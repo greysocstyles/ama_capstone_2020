@@ -43,6 +43,7 @@ if (isset($_GET['v_id'])) {
 						?>
 						<h5 class="text-dark"><?php echo 'Name: ' . $student['name'] ?></h5>
 						<h5 class="text-dark"><?php echo 'USN: ' . $student['usn'] ?></h5>
+						<h5 class="text-dark"><?php echo 'Course: ' . $student['degree_name'] . ', ' . $student['curriculum_year']  ?></h5>
 						<?php
 				endwhile;
 			endif;
