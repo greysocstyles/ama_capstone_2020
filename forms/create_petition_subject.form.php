@@ -12,6 +12,8 @@ $petition_subjects = query("select id
 							) 
 							and subject_status = 0");
 
+$petition_status = ['Pending', 'Approved', 'Declined'];
+
 ?>
 
 <div class="row">
@@ -60,8 +62,6 @@ $petition_subjects = query("select id
 						<label>Status</label>
 						<select class="form-control" name="status">
 							<?php
-
-							$petition_status = ['Pending', 'Approved', 'Declined'];
 
 							foreach ($petition_status as $value) : ?>
 
