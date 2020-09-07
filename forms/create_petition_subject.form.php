@@ -1,11 +1,25 @@
 <?php require_once 'actions/create_petition_subject.php'; ?>
 
+<?php 
+
+$petition_subjects = query("select id
+								,  subject_code 
+							from subject_list 
+							where id not in (
+								select subject_id
+								from request_to_open_list
+								where status = 'Pending'
+							) 
+							and subject_status = 0");
+
+?>
+
 <div class="row">
 	<div class="col-md-8 m-auto">
 		<!-- alert msg -->
 		<?php
 
-		if(isset($msg) && isset($alert_class)) : ?>
+		if (isset($msg) && isset($alert_class)) : ?>
 
 			<div class="alert alert-dismissible <?php echo $alert_class?>">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -16,8 +30,8 @@
 		<!-- end of alert msg -->
 
 		<ol class="breadcrumb">
-		  <li class="breadcrumb-item"><a href="index.php?menu=petition_list">Request To Open List</a></li>
-		  <li class="breadcrumb-item active">New Petition</li>
+			<li class="breadcrumb-item"><a href="index.php?menu=petition_list">Request To Open List</a></li>
+			<li class="breadcrumb-item active">New Petition</li>
 		</ol>
 
 		<div class="card">
@@ -31,10 +45,6 @@
 						<select class="form-control" name="petition_subject">
 							<option value="">Select Subject</option>
 							<?php
-
-							$petition_subjects = query("select id, subject_code 
-														from subject_list 
-														where subject_status = 0");
 
 							if ($petition_subjects) :
 								while ($row = mysqli_fetch_assoc($petition_subjects)) : ?>
@@ -51,7 +61,7 @@
 						<select class="form-control" name="status">
 							<?php
 
-							$petition_status = array('Pending', 'Approved', 'Declined');
+							$petition_status = ['Pending', 'Approved', 'Declined'];
 
 							foreach ($petition_status as $value) : ?>
 

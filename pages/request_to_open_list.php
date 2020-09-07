@@ -8,10 +8,11 @@ $petition_subject_list = query("SELECT ps.id
 										on ps.subject_id = sl.id");
 
 ?>
+
 <!-- alert msg -->
 <?php
 
-if(isset($_SESSION['msg']) && isset($_SESSION['alert'])) : ?>
+if (isset($_SESSION['msg']) && isset($_SESSION['alert'])) : ?>
 
 	<div class="alert alert-dismissible <?php echo $_SESSION['alert'] ?>">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -22,8 +23,8 @@ if(isset($_SESSION['msg']) && isset($_SESSION['alert'])) : ?>
 <!-- end of alert msg -->
 
 <ol class="breadcrumb">
-  <li class="breadcrumb-item active">Request To Open List</a></li>
-  <li class="breadcrumb-item"></li>
+	<li class="breadcrumb-item active">Request To Open List</a></li>
+	<li class="breadcrumb-item"></li>
 </ol>
 
 <h2 class="text-center">Request To Open List</h2>
