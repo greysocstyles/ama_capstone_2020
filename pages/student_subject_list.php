@@ -71,6 +71,7 @@ endif;
 ?>
 <!-- end of student details -->
 
+<!-- grades -->
 <div class="mt-3">
 	<div class="card">
 	<div class="card-body">
@@ -82,6 +83,7 @@ endif;
 			<div class="form-group col-md-2">
 				<a class="btn btn-primary form-control" href="index.php?new=student_subject&student_id=<?php echo $student_id ?>">Add Subject</a>
 			</div>
+			<!-- end of student -->
 		</div>
 		<div class="table-responsive">
 			<table class="table table-sm table-bordered table-bordered table-striped">
@@ -123,7 +125,10 @@ endif;
 	</div>
 	</div>
 </div>
-<div class="mt-3">
+<!-- end of grades -->
+
+<!-- advised subjects -->
+<div class="mt-3 mb-5">
 	<div class="card">
 		<div class="card-body">
 			<form method="POST">
@@ -135,9 +140,9 @@ endif;
 					<div class="form-group col-md-2">
 						<button class="btn btn-success form-control" name="get_advising">Get Advising</button>
 					</div>
+					<!-- end of get advising -->
 				</div>
 			</form>
-			<!-- advised subjects -->
 			<div class="table-responsive">
 				<table class="table table-sm table-striped table-hover">
 					<thead class="thead-light">
@@ -250,3 +255,4 @@ endif;
 	</div>
 <?php endif;?>
 </div>
+<!-- end of advised subjects -->
