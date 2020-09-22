@@ -9,6 +9,7 @@ if (isset($_GET['v_id'])) {
 										,	tl.trimester 
 										,	sl.subject_code
 										,	s.section_code
+										,	dl.degree_name
 										,	tsl.room 
 										,	tsl.days
 										,	tsl.time 
@@ -20,13 +21,19 @@ if (isset($_GET['v_id'])) {
 												on tsl.trimester_id = tl.id 
 
 									inner join subject_list sl 
-												on tsl.subject_id = sl.id 
+												on tsl.subject_id = sl.id
 
 									inner join section_list s 
 												on tsl.section_id = s.id
 
+									inner join degree_list dl
+												on s.degree_id = dl.id
+
 									where tl.id = '$trimester_id'
 									
+									order by  sl.subject_code
+											, s.section_code
+
 									");
 
 }
@@ -59,6 +66,7 @@ if (isset($_GET['v_id'])) {
 				<tr>
 					<th>Subject</th>
 					<th>Section</th>
+					<th>Course</th>
 					<th>Room</th>
 					<th>Days</th>
 					<th>Time</th>
@@ -73,6 +81,7 @@ if (isset($_GET['v_id'])) {
 						<tr>
 							<td><?php echo $trimester_subject['subject_code'] ?></td>
 							<td><?php echo $trimester_subject['section_code'] ?></td>
+							<td><?php echo $trimester_subject['degree_name'] ?></td>
 							<td><?php echo $trimester_subject['room'] ?></td>
 							<td><?php echo $trimester_subject['days'] ?></td>
 							<td><?php echo $trimester_subject['time'] ?></td>
