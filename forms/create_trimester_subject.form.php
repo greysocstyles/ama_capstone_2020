@@ -13,7 +13,7 @@ if (isset($_GET['trimester_id'])) {
                             where subject_status = true
                             order by subject_code asc");
 
-    $section_list = query("SELECT id, section_code FROM section_list");
+    $section_list = query("SELECT s.id, s.section_code, dl.degree_name FROM section_list s inner join degree_list dl where s.degree_id = dl.id");
 
     if ($subject_list) {
         while ($row = mysqli_fetch_assoc($subject_list)) {
@@ -86,7 +86,6 @@ if (isset($msg) && isset($alert_class)) : ?>
                                     <option value="<?php echo $subject['id'] ?>" <?php if(isset($_POST['subject'][0]) && $_POST['subject'][0] == $subject['id']) echo 'selected' ?>><?php echo $subject['subject_code'] ?></option>
 
                             <?php endforeach; ?>
-
                     </select>
                 </div>
                 <!-- Select Section -->
@@ -96,10 +95,9 @@ if (isset($msg) && isset($alert_class)) : ?>
 
                             <?php foreach ($sections as $section) : ?>
 
-                                    <option value="<?php echo $section['id'] ?>" <?php if(isset($_POST['section'][0]) && $_POST['section'][0] == $section['id']) echo 'selected' ?>><?php echo $section['section_code'] ?></option>
+                                    <option value="<?php echo $section['id'] ?>" <?php if(isset($_POST['section'][0]) && $_POST['section'][0] == $section['id']) echo 'selected' ?>><?php echo $section['section_code'] .' - '. $section['degree_name'] ?></option>
 
                             <?php endforeach; ?>
-
                     </select>
                 </div>
                 <!-- Room -->
@@ -172,7 +170,7 @@ if (isset($msg) && isset($alert_class)) : ?>
                                     <?php foreach ($sections as $section) : ?>
 
                                             <option value="<?php echo $section['id'] ?>" <?php if(isset($_POST['section'][$i]) && $_POST['section'][$i] == $section['id']) echo 'selected' ?>>
-                                                <?php echo $section['section_code'] ?>
+                                                <?php echo $section['section_code'] .' - '. $section['degree_name'] ?>
                                             </option>
 
                                     <?php endforeach; ?>

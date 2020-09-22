@@ -21,7 +21,7 @@ if (isset($_GET['edit_id'])) {
                                             ON tsl.subject_id = sl.id 
                                         INNER JOIN
                                             section_list s 
-                                            ON tsl.section_id = s.id 
+                                            ON tsl.section_id = s.id
                                     WHERE
                                         tsl.id = '$edit_id'");
 
@@ -90,12 +90,12 @@ if (isset($msg) && isset($alert_class)) : ?>
                                     <select class="form-control" name="section_id">
                                         <?php
 
-                                        $section_list = query("select * from section_list");
+                                        $section_list = query("select s.id, s.section_code, dl.degree_name from section_list s inner join degree_list dl on s.degree_id = dl.id");
 
                                         if ($section_list) :
                                             while ($sec = mysqli_fetch_assoc($section_list)) : ?>
 
-                                                <option value="<?php echo $sec['id'] ?>" <?php if (isset($row['section_id']) && $row['section_id'] == $sec['id']) echo 'selected' ?>><?php echo $sec['section_code'] ?></option>
+                                                <option value="<?php echo $sec['id'] ?>" <?php if (isset($row['section_id']) && $row['section_id'] == $sec['id']) echo 'selected' ?>><?php echo $sec['section_code'] .' - '. $sec['degree_name'] ?></option>
                                                 <?php
                                             endwhile;
                                         endif;

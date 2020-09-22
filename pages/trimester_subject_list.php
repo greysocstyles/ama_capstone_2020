@@ -8,6 +8,7 @@ if (isset($_GET['view_id'])) {
 	$trimester_subject_list = query("SELECT	tsl.id
 										,	sl.subject_code
 										,	s.section_code
+										,	dl.degree_name
 										,	tsl.room
 										,	tsl.days
 										,	tsl.time
@@ -20,6 +21,9 @@ if (isset($_GET['view_id'])) {
 
 									inner join section_list s
 												on tsl.section_id = s.id
+
+									inner join degree_list dl
+												on s.degree_id = dl.id
 
 									WHERE tsl.trimester_id = '$trimester_id'
 
@@ -73,6 +77,7 @@ endif;
 					<th>Id</th>
 					<th>Subject</th>
 					<th>Section</th>
+					<th>Course</th>
 					<th>Room</th>
 					<th>Days</th>
 					<th>Time</th>
@@ -89,6 +94,7 @@ endif;
 								<td><?php echo $trimester_subject['id'] ?></td>
 								<td><?php echo $trimester_subject['subject_code'] ?></td>
 								<td><?php echo $trimester_subject['section_code'] ?></td>
+								<td><?php echo $trimester_subject['degree_name'] ?></td>
 								<td><?php echo $trimester_subject['room'] ?></td>
 								<td><?php echo $trimester_subject['days'] ?></td>
 								<td><?php echo $trimester_subject['time'] ?></td>
