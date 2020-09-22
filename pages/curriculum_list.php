@@ -34,6 +34,7 @@ if(isset($_SESSION['msg']) && isset($_SESSION['alert'])) : ?>
 <!-- table-div -->
 <div class="table-responsive">
 	<table class="table table-sm table-bordered table-hover table-striped">
+	<caption>List of Curriculum</caption>
 		<thead class="thead-light">
 			<tr>
 				<th>Id</th>
