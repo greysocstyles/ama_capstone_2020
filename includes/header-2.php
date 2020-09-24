@@ -19,7 +19,7 @@
 					<a class="nav-link" href="index.php?m=pl">Petition</a>
 				</li>
 				<li class="nav-item dropdown">
-				    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['student_name'] ?></a>
+				    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['student_name'] ?> <i class="fas fa-user"></i></a>
 				    <div class="dropdown-menu">
 				      <a class="dropdown-item" href="index.php?v=mg&v_id=<?php echo $_SESSION['student_id'] ?>">My Grades</a>
 				      <div class="dropdown-divider"></div>

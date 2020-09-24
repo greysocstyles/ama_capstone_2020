@@ -28,7 +28,7 @@
 					<a class="nav-link" href="index.php?menu=petition_list">Petition</a>
 				</li>
 				<li class="nav-item dropdown">
-				    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
+				    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account <i class="fas fa-user"></i></a>
 				    <div class="dropdown-menu" >
 				      <a class="dropdown-item" href="index.php?menu=account_list">Account List</a>
 				      <div class="dropdown-divider"></div>
