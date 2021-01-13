@@ -7,6 +7,4 @@ require_once 'includes/db_connection.php';
 require_once 'includes/functions.php';
 require_once 'index.view.php'; 
 
-ob_end_flush(); 
-
-?>
+ob_end_flush();

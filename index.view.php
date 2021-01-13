@@ -1,4 +1,3 @@
-
 <?php require_once 'includes/header.php'; ?>
 
     <?php if (isset($_SESSION['username']) && isset($_SESSION['account_type']) || isset($_SESSION['student_name'])) : ?>

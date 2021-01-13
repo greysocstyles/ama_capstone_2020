@@ -92,14 +92,10 @@ for ($i = 1; $i <= $row_count; $i++):
 
 										order by	cs.year
 												,	cs.trimester");
-		$x = [];
-		while ($curriculum_subject = mysqli_fetch_assoc($curriculum_subject_list)) {
-			$x[] = $curriculum_subject;
-		}
-
+												
 		if ($curriculum_subject_list):
 			$yr = null;
-			foreach ($x as $curriculum_subject):
+			while ($curriculum_subject = mysqli_fetch_assoc($curriculum_subject_list)):
 					$year = year_trimester($curriculum_subject['year']);
 					$trimester = year_trimester($curriculum_subject['trimester']);
 					if ($yr != $year . ' Year' . ', ' . $trimester . ' Trimester'):
@@ -130,7 +126,7 @@ for ($i = 1; $i <= $row_count; $i++):
 							<tr>
 						</tbody>
 					<?php
-			endforeach;
+			endwhile;
 		endif;
 		?>
 		</table>
