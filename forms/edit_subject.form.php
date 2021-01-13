@@ -58,7 +58,7 @@ if (isset($msg) && isset($alert_class)) : ?>
 							</div>
 							<div class="form-group col-md-6">
 								<label for="lab_unit">Lab Unit</label>
-								<input class="form-control" type="number" min="1" max="9" id="lab_unit" name="lab_unit" value="<?php echo $row['lab_unit'] ?>">
+								<input class="form-control" type="number" min="0" max="9" id="lab_unit" name="lab_unit" value="<?php echo $row['lab_unit'] ?>">
 							</div>
 						</div>
 						<!-- error msg -->

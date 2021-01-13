@@ -22,7 +22,7 @@ if (isset($_POST['edit_subject']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 		$alert_class = 'alert-warning';
 
 	} elseif (!preg_match('/([0-9])/', $lab_unit)) {
-		$msg = 'Invalid Lab unit, 1-9 only.';
+		$msg = 'Invalid Lab unit, 0-9 only.';
 		$alert_class = 'alert-warning';
 
 	} else {
