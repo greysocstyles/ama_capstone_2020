@@ -1,8 +1,9 @@
+
 <?php
 
-$host = 'localhost';
+$host = '127.0.0.1';
 $user = 'root';
-$password = '';
+$password = '2920852_Socratesbinos';
 $database = 'ama';
 
 $connect = null;
