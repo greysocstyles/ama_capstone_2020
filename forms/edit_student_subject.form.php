@@ -75,7 +75,7 @@ endif;
 										<select class="form-control" name="grade">
 											<?php
 
-											$grade_list = array('A+','A','A-','B+','B','B-','C+','C','C-','F','IC','IP');
+											$grade_list = ['A+','A','A-','B+','B','B-','C+','C','C-','F','IC','IP'];
 
 											foreach($grade_list as $grade):
 												?>
@@ -84,7 +84,6 @@ endif;
 											endforeach;
 											?>
 										</select>
-										<input class="form-control" type="hidden" name="status" value="<?php echo $row['status'] ?>">
 									</div>
 									<div class="form-group col-md-6">
 										<label>Additional Info</label>
