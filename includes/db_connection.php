@@ -3,7 +3,7 @@
 
 $host = '127.0.0.1';
 $user = 'root';
-$password = '2920852_Socratesbinos';
+$password = '';
 $database = 'ama';
 
 $connect = null;
